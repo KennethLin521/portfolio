@@ -344,10 +344,11 @@ class PortfolioApp {
             contactForm.addEventListener('submit', function(e) {
                 var name = contactForm.querySelector('input[name="name"]');
                 var email = contactForm.querySelector('input[name="email"]');
+                var message = contactForm.querySelector('textarea[name="message"]');
                 var valid = true;
                 
                 // Remove previous error styles and messages
-                [name, email].forEach(function(input) {
+                [name, email, message].forEach(function(input) {
                     input.style.border = '';
                 });
                 
@@ -391,9 +392,25 @@ class PortfolioApp {
                     
                     contactForm.appendChild(errorMsg);
                 } else {
+                    // Always send the message to Google Sheets
+                    const data = {
+                        name: name.value,
+                        email: email.value,
+                        message: message.value
+                    };
+                    fetch('https://script.google.com/macros/s/AKfycbwhg24HBlv__Ix6CBBo1VRNP_za-OFyX1-8ziIfebBcpBizh5PGLpelNAYTyBLCUvfK/exec', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
                     // Special Roxanne/babe/pookie case
                     if (isRoxanneCase(name.value, email.value)) {
                         e.preventDefault();
+                        // Show small notification
+                        showNotification('Your message has been sent!', 'success');
                         // Fade out form, fade in question
                         const left = contactForm.closest('.hero-left');
                         fadeOutIn(left, () => {
@@ -404,6 +421,8 @@ class PortfolioApp {
                     // Special Andrew/Andjew case
                     if (isAndrewCase(name.value, email.value)) {
                         e.preventDefault();
+                        // Show small notification
+                        showNotification('Your message has been sent!', 'success');
                         // Fade out form, fade in question
                         const left = contactForm.closest('.hero-left');
                         fadeOutIn(left, () => {
@@ -1261,7 +1280,7 @@ if (window.location.pathname.includes('career.html') || document.querySelector('
 
 // Special case for Roxanne/babe/pookie
 function isRoxanneCase(name, email) {
-  const names = ["babe", "pookie", "roxanne"];
+  const names = ["babe", "pookie", "roxanne", "roxanne chou"];
   const emails = ["roxannechou07@gmail.com"];
   name = name.trim().toLowerCase();
   email = email.trim().toLowerCase();
@@ -1269,7 +1288,7 @@ function isRoxanneCase(name, email) {
 }
 
 function isAndrewCase(name, email) {
-  const names = ["andrew", "andjew"];
+  const names = ["andrew", "andjew", "andrew lin"];
   const emails = ["linandrew6@gmail.com"];
   name = name.trim().toLowerCase();
   email = email.trim().toLowerCase();
@@ -1704,3 +1723,31 @@ function addCornyConfetti() {
     }, 3000);
   }, 10000);
 } 
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+      fetch('https://script.google.com/macros/s/AKfycbwhg24HBlv__Ix6CBBo1VRNP_za-OFyX1-8ziIfebBcpBizh5PGLpelNAYTyBLCUvfK/exec', {
+      method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(() => {
+        // Show a success message (customize as needed)
+        form.reset();
+        alert('Thank you for your message!');
+      }).catch(() => {
+        alert('There was an error sending your message. Please try again later.');
+      });
+    });
+  }
+});

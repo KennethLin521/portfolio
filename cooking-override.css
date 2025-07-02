@@ -12,16 +12,17 @@
 
 /* Blog gallery image frame styles */
 .cooking-blog-gallery {
-  margin: 4rem auto 2.5rem auto;
+  margin-top: 7rem !important;
+  margin-bottom: 3.5rem !important;
   max-width: 900px;
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 2.2rem;
   justify-content: center;
 }
 .cooking-work-frame {
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
   background: rgba(255,255,255,0.04);
   border: 2px dashed #fff2;
   border-radius: 18px;
@@ -30,6 +31,7 @@
   justify-content: center;
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
   transition: border-color 0.2s, box-shadow 0.2s;
+  margin-top: 0;
 }
 .cooking-work-frame:hover {
   border-color: #fff6;
@@ -45,4 +47,33 @@
 .cooking-social-icon:hover {
   color: #388bfd !important;
   opacity: 1 !important;
+}
+
+/* Bring gallery and social section lower */
+.cooking-social-section {
+  margin-top: 3.5rem !important;
+}
+
+/* Allow scrolling: make hero-split fixed height and push main content down */
+.cooking-page .hero-split {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  z-index: 1;
+}
+.cooking-main-content {
+  margin-top: 0;
+  padding-top: 4rem;
+}
+
+@media (max-width: 900px) {
+  .cooking-work-frame {
+    width: 90vw;
+    height: 40vw;
+    min-height: 180px;
+    max-width: 98vw;
+  }
+  .cooking-main-content {
+    padding-top: 2rem;
+  }
 } 

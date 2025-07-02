@@ -1,0 +1,112 @@
+/* About Page Overrides */
+
+/* Prevent scrolling on about page */
+html, body, .about-page {
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.about-page {
+  min-height: 600px;
+}
+
+.about-page .hero-split {
+  display: flex;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.about-page .hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  padding: 0 1vw;
+}
+
+.about-page .hero-content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.about-page .bio-text {
+  color: #eaeaea;
+  font-size: 1.04rem;
+  text-align: left;
+  margin-top: 0.5rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cursor-link {
+  color: #eaeaea;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.cursor-link:hover, .cursor-link:focus {
+  color: #6cf;
+}
+
+.about-page .hero-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  padding: 0 2vw;
+}
+
+.globe-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.globe-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+}
+
+.globe-marker {
+  position: absolute;
+  font-size: 1.5rem;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px #0008);
+}
+
+@media (max-width: 900px) {
+  .about-page .hero-split {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .about-page .hero-left, .about-page .hero-right {
+    min-width: 0;
+    width: 100vw;
+    padding: 0 1vw;
+  }
+  .globe-container {
+    width: 60vw;
+    height: 60vw;
+    min-width: 180px;
+    min-height: 180px;
+    max-width: 98vw;
+    max-height: 98vw;
+  }
+} 
