@@ -1,0 +1,48 @@
+/* Cooking page override: minimalistic white scroll-down arrow, fade-in only */
+.scroll-down-arrow i {
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0;
+  animation: arrow-fade-in 1.2s 0.8s forwards;
+}
+@keyframes arrow-fade-in {
+  from { opacity: 0; transform: translateY(0); }
+  to { opacity: 0.85; transform: translateY(0); }
+}
+
+/* Blog gallery image frame styles */
+.cooking-blog-gallery {
+  margin: 4rem auto 2.5rem auto;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+}
+.cooking-work-frame {
+  width: 220px;
+  height: 220px;
+  background: rgba(255,255,255,0.04);
+  border: 2px dashed #fff2;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cooking-work-frame:hover {
+  border-color: #fff6;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+}
+.cooking-work-img-placeholder {
+  color: #fff8;
+  font-size: 1.1rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.cooking-social-icon:hover {
+  color: #388bfd !important;
+  opacity: 1 !important;
+} 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Kenneth Lin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <a href="index.html" class="back-btn" aria-label="Back to Home"><i class="fas fa-arrow-left"></i> Home</a>
+    <section class="page about-page active">
+        <!-- Hero Split Section -->
+        <div class="hero-split">
+            <div class="hero-left">
+                <div class="hero-content">
+                    <h1 class="hero-title">About</h1>
+                    <div class="career-intro">
+                        <div class="career-bio">
+                            <p class="bio-text">This is the about page. Add your bio or story here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-dynamic-img-bg" style="background-image: url('images/about.jpg');"></div>
+            </div>
+        </div>
+        <!-- Main Content Full Width -->
+        <main class="about-main-content">
+            <div class="about-section">
+                <h3>About Me</h3>
+                <p class="about-short-bio">I've lived in Taiwan (Hsinchu, Taipei), the US (Massachusetts, California), and Singapore. That's all I'll say for now.</p>
+                <div class="about-map-container" style="margin: 2rem 0; text-align: center;">
+                    <!-- World SVG Map -->
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <!-- SVG START -->
+                        <!--#include file="images/world.svg" -->
+                        <!-- SVG END -->
+                    </div>
+                    <div class="about-map-note" style="margin-top: 1rem; font-size: 0.95em; color: #aaa;">(Interactive region highlighting is possible, but advanced. For now, this is a static map.)</div>
+                </div>
+                <div class="about-bg-note" style="margin-top: 2rem; font-size: 0.95em; color: #aaa;">
+                    <strong>About tile hover background suggestion:</strong> A minimal, soft-focus world map or cityscape collage (Taipei 101, Golden Gate Bridge, Marina Bay Sands, etc.)
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html> 

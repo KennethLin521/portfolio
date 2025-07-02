@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Kenneth Lin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="contact-override.css">
+</head>
+<body style="overflow: hidden;">
+    <a href="index.html" class="back-btn" aria-label="Back to Home"><i class="fas fa-arrow-left"></i> Home</a>
+    <section class="page contact-page active" style="height: 100vh; min-height: 100vh;">
+        <div class="hero-split" style="height: 100vh; min-height: 100vh;">
+            <!-- Left: Contact Form (no card background) -->
+            <div class="hero-left" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #000 0%, #111 100%);">
+                <form class="contact-form fade-in" autocomplete="off" style="display: flex; flex-direction: column; gap: 1.1rem; min-width: 380px; max-width: 520px; width: 100%;">
+                    <h2 style="color: #388bfd; font-size: 1.6rem; font-weight: 500; margin-bottom: 0.7rem; text-align: center; letter-spacing: 0.5px; font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">Contact Me</h2>
+                    <input type="text" name="name" placeholder="Name" style="padding: 0.7rem 1.1rem; border-radius: 7px; border: none; background: rgba(255,255,255,0.07); color: #fff; font-size: 1.05rem; margin: 0; outline: none; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-weight: 400;">
+                    <input type="email" name="email" placeholder="Email" style="padding: 0.7rem 1.1rem; border-radius: 7px; border: none; background: rgba(255,255,255,0.07); color: #fff; font-size: 1.05rem; margin: 0; outline: none; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-weight: 400;">
+                    <textarea name="message" placeholder="Message" rows="5" style="padding: 0.7rem 1.1rem; border-radius: 7px; border: none; background: rgba(255,255,255,0.07); color: #fff; font-size: 1.05rem; resize: none; margin: 0; outline: none; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; font-weight: 400;"></textarea>
+                    <button type="submit" class="submit-btn" style="padding: 0.7rem 1.1rem; border-radius: 7px; background: linear-gradient(135deg, #388bfd 0%, #0a192f 100%); color: #fff; font-size: 1.05rem; font-weight: 500; border: none; cursor: pointer; transition: background 0.3s; font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">Send</button>
+                </form>
+            </div>
+            <!-- Right: Contact Animation -->
+            <div class="hero-right fade-in" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #111 0%, #222 100%);">
+                <div class="hero-dynamic-img-bg" style="background-image: url('images/contact.gif');"></div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html> 
