@@ -390,6 +390,11 @@ class PortfolioApp {
                 var name = contactForm.querySelector('input[name="name"]');
                 var email = contactForm.querySelector('input[name="email"]');
                 var message = contactForm.querySelector('textarea[name="message"]');
+                // Joshua special case
+                if (name.value.trim().toLowerCase() === 'joshua' || email.value.trim().toLowerCase() === 'jj.crunchyroll42@gmail.com') {
+                    alert('im in your walls');
+                    return;
+                }
                 var valid = true;
                 
                 // Remove previous error styles and messages
