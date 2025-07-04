@@ -1745,11 +1745,13 @@ function addCornyConfetti() {
     setTimeout(() => {
       span.style.transform = `translateY(${window.innerHeight+120}px) rotate(${Math.random()*360}deg)`;
       span.style.opacity = 0;
-    }, 100);
-    
-    setTimeout(() => {
+    }, 100000);
+    /**
+     * setTimeout(() => {
       span.remove();
     }, 3000);
+     */
+    
   }
   
   // Start continuous heart rain
@@ -1757,9 +1759,8 @@ function addCornyConfetti() {
   const heartInterval = setInterval(() => {
     createHeart();
   }, 200); // New heart every 200ms
-  
-  // Stop after 10 seconds
-  setTimeout(() => {
+  /**
+   * setTimeout(() => {
     clearInterval(heartInterval);
     setTimeout(() => {
       if (confettiContainer.parentNode) {
@@ -1767,6 +1768,9 @@ function addCornyConfetti() {
       }
     }, 3000);
   }, 10000);
+   */
+  // Stop after 10 seconds
+  
 } 
 
 // Instantiate the PortfolioApp class to activate all logic
