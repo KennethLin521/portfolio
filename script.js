@@ -459,9 +459,7 @@ class PortfolioApp {
                     const left = contactForm.closest('.hero-left');
                     contactForm.style.display = 'none';
                     fadeOutIn(left, () => {
-                        showRoxanneQuestion(left, () => {
-                            setTimeout(() => { window.location.reload(); }, 1800);
-                        });
+                        showRoxanneQuestion(left);
                     });
                     return;
                 }
@@ -1539,9 +1537,9 @@ function showRoxanneCelebration(container, onCelebration) {
       img.style.transform = 'translateX(0)';
     }, 80);
   }
-  // Add confetti/heart rain
+  // Add confetti/heart rain (runs forever)
   addCornyConfetti();
-  // Show HELLO with 5 wave emojis
+  // Show HELLO with 5 wave emojis (only this content remains)
   container.innerHTML = '';
   const hello = document.createElement('h2');
   hello.innerHTML = 'HELLO ' + '👋'.repeat(5);
@@ -1745,13 +1743,11 @@ function addCornyConfetti() {
     setTimeout(() => {
       span.style.transform = `translateY(${window.innerHeight+120}px) rotate(${Math.random()*360}deg)`;
       span.style.opacity = 0;
-    }, 100000);
-    /**
-     * setTimeout(() => {
+    }, 100);
+    
+    setTimeout(() => {
       span.remove();
     }, 3000);
-     */
-    
   }
   
   // Start continuous heart rain
@@ -1759,19 +1755,9 @@ function addCornyConfetti() {
   const heartInterval = setInterval(() => {
     createHeart();
   }, 200); // New heart every 200ms
-  /**
-   * setTimeout(() => {
-    clearInterval(heartInterval);
-    setTimeout(() => {
-      if (confettiContainer.parentNode) {
-        confettiContainer.remove();
-      }
-    }, 3000);
-  }, 10000);
-   */
-  // Stop after 10 seconds
   
-} 
+  // Hearts will continue falling indefinitely until user exits
+}
 
 // Instantiate the PortfolioApp class to activate all logic
 new PortfolioApp();
