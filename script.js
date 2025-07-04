@@ -152,28 +152,66 @@ class PortfolioApp {
         heroNavTiles.forEach(tile => {
             tile.addEventListener('mouseenter', () => {
                 navTileHovering = true;
-                if (heroDynamicImgBg && tile.dataset.img) {
-                    heroDynamicImgBg.classList.add('crossfade');
-                    setTimeout(() => {
-                        heroDynamicImgBg.style.backgroundImage = `url('${tile.dataset.img}')`;
-                        heroDynamicImgBg.classList.remove('crossfade');
-                    }, 200);
+                const heroRight = document.querySelector('.hero-right');
+                let heroDynamicImgBg = heroRight.querySelector('.hero-dynamic-img-bg');
+                let globeContainer = heroRight.querySelector('.globe-container');
+                // If globeContainer doesn't exist, create it (but keep it hidden by default)
+                if (!globeContainer) {
+                    globeContainer = document.createElement('div');
+                    globeContainer.className = 'globe-container';
+                    globeContainer.style.cssText = 'position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; display: none; opacity: 0; transition: opacity 0.4s; margin: 0 auto;';
+                    globeContainer.innerHTML = `<img src='images/about.gif' alt='Spinning Globe' style='width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18); display: block;'>`;
+                    heroRight.appendChild(globeContainer);
                 }
-            });
-            tile.addEventListener('focus', () => {
-                navTileHovering = true;
-                if (heroDynamicImgBg && tile.dataset.img) {
-                    heroDynamicImgBg.classList.add('crossfade');
-                    setTimeout(() => {
-                        heroDynamicImgBg.style.backgroundImage = `url('${tile.dataset.img}')`;
-                        heroDynamicImgBg.classList.remove('crossfade');
-                    }, 200);
+                if (tile.dataset && tile.dataset.page === 'about') {
+                    document.body.classList.add('about-hover-active');
+                    if (heroDynamicImgBg) heroDynamicImgBg.style.display = 'none';
+                    // Fade in the globeContainer
+                    globeContainer.style.display = 'flex';
+                    setTimeout(() => { globeContainer.style.opacity = '1'; }, 10);
+                    // Center the heroRight using flex
+                    heroRight.style.display = 'flex';
+                    heroRight.style.alignItems = 'center';
+                    heroRight.style.justifyContent = 'center';
+                } else {
+                    document.body.classList.remove('about-hover-active');
+                    if (globeContainer) {
+                        globeContainer.style.opacity = '0';
+                        setTimeout(() => { globeContainer.style.display = 'none'; }, 400);
+                    }
+                    if (heroDynamicImgBg && tile.dataset.img) {
+                        heroDynamicImgBg.style.display = '';
+                        heroDynamicImgBg.classList.add('crossfade');
+                        setTimeout(() => {
+                            heroDynamicImgBg.style.backgroundImage = `url('${tile.dataset.img}')`;
+                            heroDynamicImgBg.classList.remove('crossfade');
+                        }, 200);
+                    }
+                    // Reset heroRight centering
+                    heroRight.style.display = '';
+                    heroRight.style.alignItems = '';
+                    heroRight.style.justifyContent = '';
                 }
             });
             tile.addEventListener('mouseleave', () => {
                 navTileHovering = false;
+                const heroRight = document.querySelector('.hero-right');
+                let heroDynamicImgBg = heroRight.querySelector('.hero-dynamic-img-bg');
+                let globeContainer = heroRight.querySelector('.globe-container');
+                if (tile.dataset && tile.dataset.page === 'about') {
+                    document.body.classList.remove('about-hover-active');
+                    if (globeContainer) {
+                        globeContainer.style.opacity = '0';
+                        setTimeout(() => { globeContainer.style.display = 'none'; }, 400);
+                    }
+                    if (heroDynamicImgBg) heroDynamicImgBg.style.display = '';
+                    // Reset heroRight centering
+                    heroRight.style.display = '';
+                    heroRight.style.alignItems = '';
+                    heroRight.style.justifyContent = '';
+                }
                 setTimeout(() => {
-                    if (!navTileHovering && heroDynamicImgBg) {
+                    if (!navTileHovering && heroDynamicImgBg && (!tile.dataset.page || tile.dataset.page !== 'about')) {
                         heroDynamicImgBg.classList.add('crossfade');
                         setTimeout(() => {
                             heroDynamicImgBg.style.backgroundImage = `url('images/olie.jpg')`;
@@ -182,17 +220,23 @@ class PortfolioApp {
                     }
                 }, 50);
             });
+            tile.addEventListener('focus', () => {
+                clearAllDimmed();
+                clearShifts();
+                panel.classList.remove('dimmed');
+                if (glassPanels.length === 2) {
+                    if (idx === 0) glassPanels[1].classList.add('shift-right');
+                    if (idx === 1) glassPanels[0].classList.add('shift-left');
+                } else {
+                    glassPanels.forEach((p, i) => {
+                        if (i < idx) p.classList.add('shift-left');
+                        if (i > idx) p.classList.add('shift-right');
+                    });
+                }
+            });
             tile.addEventListener('blur', () => {
-                navTileHovering = false;
-                setTimeout(() => {
-                    if (!navTileHovering && heroDynamicImgBg) {
-                        heroDynamicImgBg.classList.add('crossfade');
-                        setTimeout(() => {
-                            heroDynamicImgBg.style.backgroundImage = `url('images/olie.jpg')`;
-                            heroDynamicImgBg.classList.remove('crossfade');
-                        }, 200);
-                    }
-                }, 50);
+                setAllDimmed();
+                clearShifts();
             });
         });
     }
@@ -341,7 +385,8 @@ class PortfolioApp {
     setupContactForm() {
         const contactForm = document.querySelector('.contact-form');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Always prevent default at the top
                 var name = contactForm.querySelector('input[name="name"]');
                 var email = contactForm.querySelector('input[name="email"]');
                 var message = contactForm.querySelector('textarea[name="message"]');
@@ -375,7 +420,6 @@ class PortfolioApp {
                 }
                 
                 if (!valid) {
-                    e.preventDefault();
                     var errorMsg = document.createElement('div');
                     errorMsg.className = 'error-message';
                     errorMsg.style.cssText = 'color: #ff4444; font-size: 0.9rem; margin-top: 0.5rem; text-align: center;';
@@ -391,115 +435,117 @@ class PortfolioApp {
                     }
                     
                     contactForm.appendChild(errorMsg);
-                } else {
-                    // Always send the message to Google Sheets
-                    const data = {
-                        name: name.value,
-                        email: email.value,
-                        message: message.value
-                    };
-                    fetch('https://script.google.com/macros/s/AKfycbwhg24HBlv__Ix6CBBo1VRNP_za-OFyX1-8ziIfebBcpBizh5PGLpelNAYTyBLCUvfK/exec', {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    });
-                    // Special Roxanne/babe/pookie case
-                    if (isRoxanneCase(name.value, email.value)) {
-                        e.preventDefault();
-                        // Show small notification
-                        showNotification('Your message has been sent!', 'success');
-                        // Fade out form, fade in question
-                        const left = contactForm.closest('.hero-left');
-                        fadeOutIn(left, () => {
-                            showRoxanneQuestion(left);
-                        });
-                        return;
-                    }
-                    // Special Andrew/Andjew case
-                    if (isAndrewCase(name.value, email.value)) {
-                        e.preventDefault();
-                        // Show small notification
-                        showNotification('Your message has been sent!', 'success');
-                        // Fade out form, fade in question
-                        const left = contactForm.closest('.hero-left');
-                        fadeOutIn(left, () => {
-                            showAndrewQuestion(left);
-                        });
-                        return;
-                    }
-                    // Form is valid - show success animation and reset
-                    e.preventDefault();
-                    
-                    // Create sleek success animation
-                    var successOverlay = document.createElement('div');
-                    successOverlay.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.92);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                        opacity: 0;
-                        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-                    `;
-                    
-                    var successContent = document.createElement('div');
-                    successContent.style.cssText = `
-                        text-align: center;
-                        color: white;
-                        transform: translateY(20px);
-                        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-                    `;
-                    
-                    successContent.innerHTML = `
-                        <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; color: #ffffff;">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div style="font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s; color: #ffffff;">
-                            Message Sent
-                        </div>
-                        <div style="font-size: 1rem; opacity: 0.8; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s; color: #cccccc;">
-                            Thank you for reaching out!
-                        </div>
-                    `;
-                    
-                    successOverlay.appendChild(successContent);
-                    document.body.appendChild(successOverlay);
-                    
-                    // Animate in
-                    setTimeout(() => {
-                        successOverlay.style.opacity = '1';
-                        successContent.style.transform = 'translateY(0)';
-                        
-                        // Animate in the icon and text elements
-                        setTimeout(() => {
-                            successContent.querySelectorAll('div').forEach((el, index) => {
-                                setTimeout(() => {
-                                    el.style.opacity = '1';
-                                }, index * 200);
-                            });
-                        }, 300);
-                    }, 50);
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Animate out after 2.5 seconds
-                    setTimeout(() => {
-                        successOverlay.style.opacity = '0';
-                        successContent.style.transform = 'translateY(-20px)';
-                        setTimeout(() => {
-                            document.body.removeChild(successOverlay);
-                        }, 600);
-                    }, 2500);
+                    return; // Stop here if not valid
                 }
+                // Always send the message to Google Sheets
+                const data = {
+                    name: name.value,
+                    email: email.value,
+                    message: message.value
+                };
+                fetch('https://script.google.com/macros/s/AKfycbwhg24HBlv__Ix6CBBo1VRNP_za-OFyX1-8ziIfebBcpBizh5PGLpelNAYTyBLCUvfK/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                // Special Roxanne/babe/pookie case
+                if (isRoxanneCase(name.value, email.value)) {
+                    // Show small notification
+                    this.showNotification('Your message has been sent!', 'success');
+                    // Fade out form, fade in question
+                    const left = contactForm.closest('.hero-left');
+                    contactForm.style.display = 'none';
+                    fadeOutIn(left, () => {
+                        showRoxanneQuestion(left, () => {
+                            setTimeout(() => { window.location.reload(); }, 1800);
+                        });
+                    });
+                    return;
+                }
+                // Special Andrew/Andjew case
+                if (isAndrewCase(name.value, email.value)) {
+                    // Show small notification
+                    this.showNotification('Your message has been sent!', 'success');
+                    // Fade out form, fade in question
+                    const left = contactForm.closest('.hero-left');
+                    contactForm.style.display = 'none';
+                    fadeOutIn(left, () => {
+                        showAndrewQuestion(left, () => {
+                            setTimeout(() => { window.location.reload(); }, 1800);
+                        });
+                    });
+                    return;
+                }
+                // Form is valid - show success animation and reset
+                // Create sleek success animation
+                var successOverlay = document.createElement('div');
+                successOverlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.92);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                `;
+                
+                var successContent = document.createElement('div');
+                successContent.style.cssText = `
+                    text-align: center;
+                    color: white;
+                    transform: translateY(20px);
+                    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                `;
+                
+                successContent.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; color: #ffffff;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div style="font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s; color: #ffffff;">
+                        Message Sent
+                    </div>
+                    <div style="font-size: 1rem; opacity: 0.8; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s; color: #cccccc;">
+                        Thank you for reaching out!
+                    </div>
+                `;
+                
+                successOverlay.appendChild(successContent);
+                document.body.appendChild(successOverlay);
+                
+                // Animate in
+                setTimeout(() => {
+                    successOverlay.style.opacity = '1';
+                    successContent.style.transform = 'translateY(0)';
+                    
+                    // Animate in the icon and text elements
+                    setTimeout(() => {
+                        successContent.querySelectorAll('div').forEach((el, index) => {
+                            setTimeout(() => {
+                                el.style.opacity = '1';
+                            }, index * 200);
+                        });
+                    }, 300);
+                }, 50);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Animate out after 2.5 seconds
+                setTimeout(() => {
+                    successOverlay.style.opacity = '0';
+                    successContent.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        document.body.removeChild(successOverlay);
+                    }, 600);
+                }, 2500);
             });
         }
     }
@@ -1304,7 +1350,7 @@ function fadeOutIn(element, callback, duration = 900) {
   }, duration);
 }
 
-function showRoxanneQuestion(container) {
+function showRoxanneQuestion(container, onCelebration) {
   container.innerHTML = '';
   // Build verification UI
   const verifyWrap = document.createElement('div');
@@ -1382,14 +1428,14 @@ function showRoxanneQuestion(container) {
             if (choice.value === 'black') {
               // Correct: show short answer question
               fadeOutIn(qWrap, () => {
-                showRoxanneSecondQuestion(container);
+                showRoxanneSecondQuestion(container, onCelebration);
               }, 900);
             } else {
               // Wrong answer: show 'who are you.' then fade back to contact form
               if (!qWrap.querySelector('.whoareyou-message')) {
                 const err = document.createElement('div');
                 err.className = 'whoareyou-message';
-                err.textContent = 'who are you.';
+                err.textContent = 'who are you';
                 err.style.cssText = 'color: #d32f2f; font-size: 1.15rem; margin-top: 1.3rem; text-align: center; font-weight: 600; opacity: 0; transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1);';
                 qWrap.appendChild(err);
                 setTimeout(() => { err.style.opacity = '1'; }, 100);
@@ -1410,7 +1456,7 @@ function showRoxanneQuestion(container) {
   }, 200);
 }
 
-function showRoxanneSecondQuestion(container) {
+function showRoxanneSecondQuestion(container, onCelebration) {
   container.innerHTML = '';
   const qWrap = document.createElement('div');
   qWrap.className = 'roxanne-question fade-in';
@@ -1442,14 +1488,14 @@ function showRoxanneSecondQuestion(container) {
     if (val === '8' || val === 'eight') {
       // Correct! Show celebration
       fadeOutIn(qWrap, () => {
-        showRoxanneCelebration(container);
+        showRoxanneCelebration(container, onCelebration);
       }, 900);
     } else {
       // Wrong answer: show 'who are you.' then fade back to contact form
       if (!qWrap.querySelector('.whoareyou-message')) {
         const err = document.createElement('div');
         err.className = 'whoareyou-message';
-        err.textContent = 'who are you.';
+        err.textContent = 'who are you';
         err.style.cssText = 'color: #d32f2f; font-size: 1.15rem; margin-top: 1.3rem; text-align: center; font-weight: 600; opacity: 0; transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1);';
         qWrap.appendChild(err);
         setTimeout(() => { err.style.opacity = '1'; }, 100);
@@ -1464,7 +1510,7 @@ function showRoxanneSecondQuestion(container) {
   container.appendChild(qWrap);
 }
 
-function showRoxanneCelebration(container) {
+function showRoxanneCelebration(container, onCelebration) {
   // Change right side image to fade in pookie.png
   const right = document.querySelector('.contact-page .hero-right');
   if (right) {
@@ -1501,9 +1547,10 @@ function showRoxanneCelebration(container) {
   hello.innerHTML = 'HELLO ' + '👋'.repeat(5);
   hello.style.cssText = 'color: #f3f3f3; font-size: 2.2rem; font-weight: 700; text-align: center; margin-top: 2.5rem; letter-spacing: 0.08em;';
   container.appendChild(hello);
+  if (typeof onCelebration === 'function') onCelebration();
 }
 
-function showAndrewQuestion(container) {
+function showAndrewQuestion(container, onCelebration) {
   container.innerHTML = '';
   // Build verification UI
   const verifyWrap = document.createElement('div');
@@ -1568,7 +1615,7 @@ function showAndrewQuestion(container) {
             if (breed.toLowerCase().includes(correctAnswer)) {
               // Correct: go to next screen (placeholder)
               fadeOutIn(qWrap, () => {
-                showAndrewNextScreen(container);
+                showAndrewNextScreen(container, onCelebration);
               }, 900);
             } else {
               // Wrong answer: show '?????' then fade back to contact form
@@ -1596,44 +1643,41 @@ function showAndrewQuestion(container) {
   }, 200);
 }
 
-function showAndrewNextScreen(container) {
+function showAndrewNextScreen(container, onCelebration) {
   // Final greeting screen for Andrew
   container.innerHTML = '';
   const next = document.createElement('div');
   next.className = 'andrew-next fade-in';
-  next.style.cssText = 'display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 340px; max-width: 520px; width: 100%; background: none; color: #f3f3f3; font-family: \'Inter\', \'Segoe UI\', Arial, sans-serif;';
+  next.style.cssText = 'display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw; min-height: 100vh; background: none; color: #f3f3f3; font-family: \'Inter\', \'Segoe UI\', Arial, sans-serif; padding: 0; margin: 0;';
 
-  const msg = document.createElement('h2');
-  msg.innerHTML = 'wow hello!!! ' + '👋'.repeat(3);
-  msg.style.cssText = 'color: #f3f3f3; font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 1.2rem; letter-spacing: 0.08em; margin-top: 2.5rem;';
-  next.appendChild(msg);
-
-  // Placeholder image for andjew.jpg
-  const img = document.createElement('img');
-  img.src = 'images/andjew.jpg'; // To be uploaded
-  img.alt = 'andjew';
-  img.style.cssText = `
-    max-width: 320px;
-    border-radius: 18px;
-    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
-    margin: 0 auto;
+  // Remove the old greeting and image, and instead show the spoiler image big
+  const spoilerImg = document.createElement('img');
+  spoilerImg.src = 'images/SPOILER_image.png';
+  spoilerImg.alt = 'spoiler';
+  spoilerImg.style.cssText = `
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
     display: block;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    z-index: 9999;
+    box-shadow: none;
+    border-radius: 0;
     opacity: 0;
-    transform: translateX(80px);
-    transition: opacity 1.1s cubic-bezier(0.4,0,0.2,1), transform 1.1s cubic-bezier(0.4,0,0.2,1);
+    transition: opacity 1.1s cubic-bezier(0.4,0,0.2,1);
   `;
-  next.appendChild(img);
-
+  next.appendChild(spoilerImg);
   container.appendChild(next);
 
   // Trigger fade-in for image
   setTimeout(() => {
-    img.style.opacity = '1';
-    img.style.transform = 'translateX(0)';
+    spoilerImg.style.opacity = '1';
   }, 80);
 }
 
-function showAndrewCelebration(container) {
+function showAndrewCelebration(container, onCelebration) {
   // Change right side image to fade in olie.jpg
   const right = document.querySelector('.contact-page .hero-right');
   if (right) {
@@ -1670,6 +1714,7 @@ function showAndrewCelebration(container) {
   hello.innerHTML = 'HELLO ' + '👋'.repeat(5);
   hello.style.cssText = 'color: #f3f3f3; font-size: 2.2rem; font-weight: 700; text-align: center; margin-top: 2.5rem; letter-spacing: 0.08em;';
   container.appendChild(hello);
+  if (typeof onCelebration === 'function') onCelebration();
 }
 
 function addCornyConfetti() {
@@ -1724,30 +1769,5 @@ function addCornyConfetti() {
   }, 10000);
 } 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
-      };
-      fetch('https://script.google.com/macros/s/AKfycbwhg24HBlv__Ix6CBBo1VRNP_za-OFyX1-8ziIfebBcpBizh5PGLpelNAYTyBLCUvfK/exec', {
-      method: 'POST',
-        mode: 'no-cors', // Required for Google Apps Script
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }).then(() => {
-        // Show a success message (customize as needed)
-        form.reset();
-        alert('Thank you for your message!');
-      }).catch(() => {
-        alert('There was an error sending your message. Please try again later.');
-      });
-    });
-  }
-});
+// Instantiate the PortfolioApp class to activate all logic
+new PortfolioApp();

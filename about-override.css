@@ -90,6 +90,16 @@ html, body, .about-page {
   filter: drop-shadow(0 2px 6px #0008);
 }
 
+.hero-dynamic-img-bg {
+  width: 320px !important;
+  height: 320px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 50%;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+  margin: 0 auto;
+}
+
 @media (max-width: 900px) {
   .about-page .hero-split {
     flex-direction: column;
