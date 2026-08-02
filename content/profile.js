@@ -24,7 +24,7 @@ export const profile = {
   // Food page intro
   foodBio: {
     en: "Home cook and restauranteur.",
-    zh: "在家下廚，出門吃館子。",
+    zh: "在家下廚，出門大吃大喝。",
   },
 
   links: {

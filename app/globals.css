@@ -23,9 +23,13 @@
   --food: #e07a4f;   /* persimmon — food */
 
   /* next/font injects --font-display/--font-body/--font-mono on <html>;
-     these stacks add fallbacks under non-colliding names */
-  --serif: var(--font-display), Georgia, serif;
-  --sans: var(--font-body), system-ui, sans-serif;
+     these stacks add fallbacks under non-colliding names. The Latin fonts
+     are serifs (formal direction); the CJK fallbacks are serifs too so
+     Chinese matches the register. */
+  --serif: var(--font-display), "Times New Roman", "Noto Serif TC",
+    "Songti TC", PMingLiU, serif;
+  --sans: var(--font-body), Georgia, "Noto Serif TC", "Songti TC", PMingLiU,
+    serif;
   --mono: var(--font-mono), ui-monospace, monospace;
 
   --container: 1040px;

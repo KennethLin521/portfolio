@@ -134,6 +134,36 @@ export const experience = [
     ],
     tools: ["Unity", "MRTK", "C#", "Azure"],
   },
+  {
+    date: { en: "Summer 2023", zh: "2023 夏" },
+    title: { en: "Cyber Security Engineer Intern", zh: "資安實習工程師" },
+    org: "Deloitte & Touche",
+    location: { en: "Taipei, Taiwan", zh: "台北" },
+    logo: null, // TODO Kenneth: public/images/logos/deloitte.png if you want one
+    summary: {
+      en: "AI-bias detection for fintech tools and a Python-automated social engineering test.",
+      zh: "金融 AI 工具偏差檢測，以及 Python 自動化社交工程測試。",
+    },
+    bullets: [
+      {
+        en: "Detected bias in AI-driven finance management tools with Veritas Toolkit 2.0, deploying it across public AI fintech systems such as credit scoring models.",
+        zh: "使用 Veritas Toolkit 2.0 檢測 AI 金融管理工具的偏差，部署於信用評分模型等公開 AI 金融系統。",
+      },
+      {
+        en: "Exported and containerized models for seamless integration with the Veritas tool.",
+        zh: "將模型匯出並容器化，以無縫整合 Veritas 工具。",
+      },
+      {
+        en: "Presented findings to audit and solutions teams, shaping how to quantify the metrics and next steps for AI governance in finance.",
+        zh: "向稽核與解決方案團隊簡報分析結果，討論指標量化方式與金融 AI 治理的後續方向。",
+      },
+      {
+        en: "Automated the annual internal social engineering test with Python, covering roughly 400 employees and cutting completion time by 30% versus the manual method.",
+        zh: "以 Python 自動化年度內部社交工程測試，涵蓋約 400 名員工，較人工方式節省 30% 時間。",
+      },
+    ],
+    tools: ["Veritas Toolkit 2.0", "Python", "Containerization"],
+  },
 ];
 
 export const education = [
