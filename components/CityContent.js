@@ -25,20 +25,17 @@ export default function CityContent({ city }) {
         </p>
       </header>
 
+      {/* Plain list — only the restaurant name itself is the link */}
       <div className="city-restaurant-list">
         {city.restaurants.map((r) => (
-          <Link
-            key={r.slug}
-            href={`/food/${city.slug}/${r.slug}`}
-            className="city-restaurant-row"
-          >
-            <div className="row-main">
-              <span className="name">{r.name}</span>
-              {r.price && <span className="price">{r.price}</span>}
-            </div>
-            {r.notes && <p className="notes">{r.notes}</p>}
-            <span className="row-arrow">→</span>
-          </Link>
+          <div className="city-restaurant-row" key={r.slug}>
+            <Link
+              href={`/food/${city.slug}/${r.slug}`}
+              className="restaurant-name-link"
+            >
+              {r.name}
+            </Link>
+          </div>
         ))}
       </div>
     </div>
