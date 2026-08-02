@@ -1,4 +1,4 @@
-/* ===========================================================================
+﻿/* ===========================================================================
    Kenneth Lin — personal site
    One stylesheet, organized top to bottom:
      1. Design tokens     4. Nav + footer      7. Food page
@@ -20,9 +20,11 @@
   --eng: #34558b;    /* steel blue — engineering */
   --food: #b5502a;   /* persimmon — food */
 
-  --font-display: var(--font-display), Georgia, serif;
-  --font-body: var(--font-body), system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+  /* next/font injects --font-display/--font-body/--font-mono on <html>;
+     these stacks add fallbacks under non-colliding names */
+  --serif: var(--font-display), Georgia, serif;
+  --sans: var(--font-body), system-ui, sans-serif;
+  --mono: var(--font-mono), ui-monospace, monospace;
 
   --container: 1040px;
   --radius: 10px;
@@ -43,7 +45,7 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -85,7 +87,7 @@ button {
 
 /* Mono section labels — the engineering thread that runs through the site */
 .kicker {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -101,7 +103,7 @@ button {
 }
 
 .page-header h1 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   font-weight: 550;
   line-height: 1.1;
@@ -129,13 +131,13 @@ button {
 }
 
 .section-label .num {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--muted);
 }
 
 .section-label h2 {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -144,7 +146,7 @@ button {
 
 .chip {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.74rem;
   line-height: 1;
   padding: 0.42rem 0.6rem;
@@ -190,7 +192,7 @@ button {
 }
 
 .nav-name {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: 1.18rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -202,7 +204,7 @@ button {
 }
 
 .nav-link {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -237,7 +239,7 @@ button {
 }
 
 .footer-kicker {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   color: var(--muted);
@@ -257,7 +259,7 @@ button {
 }
 
 .footer-links a {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--muted);
   transition: color 0.15s ease;
@@ -273,7 +275,7 @@ button {
   padding-top: 1.25rem;
   padding-bottom: 1.5rem;
   border-top: 1px solid var(--line);
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.75rem;
   color: var(--muted);
 }
@@ -281,11 +283,13 @@ button {
 /* ---- 5. Home ---------------------------------------------------------------- */
 
 .hero {
-  padding: 6.5rem 0 4rem;
+  /* vertical only — .container supplies the horizontal padding */
+  padding-top: 6.5rem;
+  padding-bottom: 4rem;
 }
 
 .hero h1 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight: 550;
   line-height: 1.08;
@@ -345,7 +349,7 @@ button {
 .path-card--food:hover { border-color: var(--food); }
 
 .path-label {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -355,7 +359,7 @@ button {
 .path-card--food .path-label { color: var(--food); }
 
 .path-card h2 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: 1.75rem;
   font-weight: 550;
   margin-top: 0.9rem;
@@ -375,7 +379,7 @@ button {
 .path-arrow {
   display: inline-block;
   margin-top: 1.3rem;
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.9rem;
   transition: transform 0.18s ease;
 }
@@ -432,7 +436,7 @@ button {
 }
 
 .timeline-item .date {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -478,7 +482,7 @@ button {
 }
 
 .project-card h3 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 550;
 }
@@ -532,7 +536,7 @@ button {
 }
 
 .skills-group h3 {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -554,7 +558,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.85rem;
   padding: 0.65rem 1.1rem;
   border: 1px solid var(--line);
@@ -586,7 +590,7 @@ button {
 
 .gallery-caption {
   margin-top: 0.9rem;
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--muted);
 }
@@ -607,7 +611,7 @@ button {
 }
 
 .restaurant-cta h3 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-style: italic;
   font-size: 1.6rem;
   font-weight: 550;
@@ -622,7 +626,7 @@ button {
 /* ---- 8. Restaurant explorer ---------------------------------------------------------- */
 
 .stats-line {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--muted);
   margin-top: 0.9rem;
@@ -654,13 +658,13 @@ button {
 }
 
 .continent-header h2 {
-  font-family: var(--font-display);
+  font-family: var(--serif);
   font-size: 1.9rem;
   font-weight: 550;
 }
 
 .count {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--muted);
 }
@@ -686,7 +690,7 @@ button {
 }
 
 .caret {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.75rem;
   color: var(--muted);
   transition: transform 0.15s ease;
@@ -736,7 +740,7 @@ button {
 }
 
 .price {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--food);
   flex-shrink: 0;
@@ -756,7 +760,7 @@ button {
 }
 
 .photo-links a {
-  font-family: var(--font-mono);
+  font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--eng);
   border-bottom: 1px solid transparent;
