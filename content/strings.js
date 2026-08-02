@@ -49,8 +49,9 @@ export const ui = {
 
   career: {
     kicker: "01 / CAREER",
-    title: { en: "What I build", zh: "我在做的事" },
+    title: { en: "Career", zh: "職涯" },
     linkedinCta: { en: "Connect on LinkedIn ↗", zh: "LinkedIn 找我 ↗" },
+    resumeCta: { en: "Resume ↗", zh: "履歷 ↗" },
     sections: {
       experience: { en: "Experience", zh: "經歷" },
       projects: { en: "Featured Projects", zh: "精選專案" },

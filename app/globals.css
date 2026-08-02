@@ -495,8 +495,9 @@ button {
   max-width: 60ch;
 }
 
-.career-header-text .cta {
-  display: inline-block;
+.career-header-text .cta-row {
+  display: inline-flex;
+  gap: 1.6rem;
   margin-top: 1.1rem;
 }
 

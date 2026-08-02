@@ -103,14 +103,24 @@ export default function CareerContent() {
           <p className="kicker kicker--eng">{t.kicker}</p>
           <h1>{pick(t.title, lang)}</h1>
           <p className="lede">{pick(profile.careerBio, lang)}</p>
-          <a
-            className="text-link cta"
-            href={profile.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {pick(t.linkedinCta, lang)}
-          </a>
+          <span className="cta-row">
+            <a
+              className="text-link cta"
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {pick(t.linkedinCta, lang)}
+            </a>
+            <a
+              className="text-link cta"
+              href="/Kenneth_Lin_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {pick(t.resumeCta, lang)}
+            </a>
+          </span>
         </div>
         <img className="portrait" src="/images/linkedin.jpg" alt="Kenneth Lin" />
       </header>
