@@ -2,6 +2,7 @@ import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { LanguageProvider } from "../lib/i18n";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
+import OllieEasterEgg from "../components/OllieEasterEgg";
 import "./globals.css";
 
 // Three-font system, one job each:
@@ -33,16 +34,20 @@ export default function RootLayout({ children }) {
     >
       <body>
         {/* Marks that JS is running — scroll-reveal styles only hide content
-            under .js, so a no-JS visitor still sees everything */}
+            under .js, so a no-JS visitor still sees everything. The console
+            line is a hint for fellow engineers. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js');",
+            __html:
+              "document.documentElement.classList.add('js');" +
+              "console.log('%cchips + \\u5403 \\u00b7 psst: type ollie anywhere \\ud83d\\udc15','color:#e07a4f;font-family:monospace;font-size:12px');",
           }}
         />
         <LanguageProvider>
           <SiteNav />
           <main className="site-main">{children}</main>
           <SiteFooter />
+          <OllieEasterEgg />
         </LanguageProvider>
       </body>
     </html>

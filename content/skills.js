@@ -10,10 +10,10 @@ export const skillGroups = [
   {
     label: { en: "EDA Tools", zh: "EDA 工具" },
     items: [
+      "Fusion Compiler",
       "Simulink",
       "Synopsys Design Compiler",
       "Synopsys Custom Compiler",
-      "Fusion Compiler",
       "HSPICE",
       "Cadence Virtuoso",
       "Cadence Innovus",

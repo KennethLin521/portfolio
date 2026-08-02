@@ -9,7 +9,7 @@ export const profile = {
   // Home page hero — kept intentionally simple.
   heroTitlePrefix: { en: "Hi, I’m ", zh: "嗨，我是 " },
   heroTitleName: "Kenneth",
-  heroTitleSuffix: { en: ".", zh: "。" },
+  heroTitleSuffix: { en: "", zh: "" },
   subhead: {
     en: "Welcome to my corner of the internet. Have a look around.",
     zh: "歡迎來到我的網路小角落，隨意逛逛。",

@@ -28,7 +28,6 @@ function TimelineItem({ item, lang, open, onToggle }) {
             <span className="xp-summary">{pick(item.summary, lang)}</span>
           )}
         </span>
-        <span className={`caret${open ? " is-open" : ""}`}>▶</span>
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
         <div>
@@ -63,7 +62,6 @@ function ProjectCard({ project, lang, open, onToggle }) {
             <span className="xp-summary">{pick(project.tagline, lang)}</span>
           )}
         </span>
-        <span className={`caret${open ? " is-open" : ""}`}>▶</span>
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
         <div>

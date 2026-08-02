@@ -24,8 +24,8 @@ export const ui = {
     careerCard: {
       label: "01 / CAREER",
       title: {
-        en: "Chips, signals, and the tools I live in.",
-        zh: "晶片、訊號，和我天天泡在裡面的工具。",
+        en: "Chips, signals, and the tools I live in",
+        zh: "晶片、訊號，和我天天泡在裡面的工具",
       },
       blurb: {
         en: "Experience, projects, and education, from RTL to silicon.",
@@ -36,8 +36,8 @@ export const ui = {
     foodCard: {
       label: "02 / FOOD",
       title: {
-        en: "Cooking, and everywhere worth eating.",
-        zh: "下廚，以及所有值得一吃的地方。",
+        en: "Cooking, and everywhere worth eating",
+        zh: "下廚，以及所有值得一吃的地方",
       },
       blurb: {
         en: "What I cook, and a world list of restaurants worth remembering.",
@@ -49,7 +49,7 @@ export const ui = {
 
   career: {
     kicker: "01 / CAREER",
-    title: { en: "The work.", zh: "正事。" },
+    title: { en: "What I build", zh: "我在做的事" },
     linkedinCta: { en: "Connect on LinkedIn ↗", zh: "LinkedIn 找我 ↗" },
     sections: {
       experience: { en: "Experience", zh: "經歷" },
@@ -63,7 +63,7 @@ export const ui = {
 
   food: {
     kicker: "02 / FOOD",
-    title: { en: "The other half.", zh: "吃喝的那一半。" },
+    title: { en: "The other half", zh: "吃喝的那一半" },
     listTitle: { en: "The Restaurant List", zh: "餐廳清單" },
     listBlurb: {
       en: "A list of the memorable restaurants I have eaten at around the world. Click a city to see every spot.",
@@ -84,7 +84,7 @@ export const ui = {
 
   ollie: {
     kicker: "03 / OLLIE",
-    title: { en: "This is my dog, Ollie.", zh: "這是我的狗，Ollie。" },
+    title: { en: "This is my dog Ollie", zh: "這是我的狗 Ollie" },
   },
 
   footer: {
@@ -96,7 +96,7 @@ export const ui = {
   },
 
   notFound: {
-    title: { en: "Nothing on the menu here.", zh: "這頁菜單上沒有東西。" },
+    title: { en: "Nothing on the menu here", zh: "這頁菜單上沒有東西" },
     body: { en: "This page does not exist. ", zh: "這個頁面不存在，" },
     homeLink: { en: "Head back home", zh: "回首頁" },
   },

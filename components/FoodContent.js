@@ -58,13 +58,11 @@ export default function FoodContent({ tree, source, stats }) {
               <section className="continent">
                 <div className="continent-header">
                   <h2>{continent.name}</h2>
-                  <span className="count">({continent.count})</span>
                 </div>
                 {continent.countries.map((country) => (
                   <div className="country-block" key={country.name}>
                     <div className="country-header">
                       <h3>{country.name}</h3>
-                      <span className="count">({country.count})</span>
                     </div>
                     <div className="city-links">
                       {country.cities.map((city) => (
