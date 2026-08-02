@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Din Tai Fung (sample row)",
+    "continent": "Asia",
+    "country": "Taiwan",
+    "city": "Taipei",
+    "price": "$$",
+    "notes": "Sample data — connect your Google Sheet to replace this. Xiao long bao benchmark.",
+    "photos": []
+  },
+  {
+    "name": "Yongkang Beef Noodle (sample row)",
+    "continent": "Asia",
+    "country": "Taiwan",
+    "city": "Taipei",
+    "price": "$",
+    "notes": "Sample data. Braised beef noodle soup, the classic.",
+    "photos": []
+  },
+  {
+    "name": "Raohe Pepper Buns (sample row)",
+    "continent": "Asia",
+    "country": "Taiwan",
+    "city": "Taipei",
+    "price": "$",
+    "notes": "Sample data. Charcoal-oven pepper pork buns at the night market gate.",
+    "photos": []
+  },
+  {
+    "name": "Du Hsiao Yueh (sample row)",
+    "continent": "Asia",
+    "country": "Taiwan",
+    "city": "Tainan",
+    "price": "$$",
+    "notes": "Sample data. Danzai noodles since 1895.",
+    "photos": []
+  },
+  {
+    "name": "Phở Gia Truyền (sample row)",
+    "continent": "Asia",
+    "country": "Vietnam",
+    "city": "Hanoi",
+    "price": "$",
+    "notes": "Sample data. Beef phở, no menu, line out the door by 7am.",
+    "photos": []
+  },
+  {
+    "name": "Bún Chả Hương Liên (sample row)",
+    "continent": "Asia",
+    "country": "Vietnam",
+    "city": "Hanoi",
+    "price": "$",
+    "notes": "Sample data. The Obama bún chả spot.",
+    "photos": []
+  },
+  {
+    "name": "Cơm Tấm Ba Ghiền (sample row)",
+    "continent": "Asia",
+    "country": "Vietnam",
+    "city": "Ho Chi Minh City",
+    "price": "$",
+    "notes": "Sample data. Broken rice with the char-grilled pork chop.",
+    "photos": []
+  },
+  {
+    "name": "Bánh Mì Huỳnh Hoa (sample row)",
+    "continent": "Asia",
+    "country": "Vietnam",
+    "city": "Ho Chi Minh City",
+    "price": "$",
+    "notes": "Sample data. The maximalist bánh mì.",
+    "photos": []
+  },
+  {
+    "name": "Katz's Delicatessen (sample row)",
+    "continent": "North America",
+    "country": "United States",
+    "city": "New York",
+    "price": "$$",
+    "notes": "Sample data. Pastrami on rye, no substitutions needed.",
+    "photos": []
+  },
+  {
+    "name": "Pine & Crane (sample row)",
+    "continent": "North America",
+    "country": "United States",
+    "city": "Los Angeles",
+    "price": "$$",
+    "notes": "Sample data. Taiwanese-American done right.",
+    "photos": []
+  },
+  {
+    "name": "L'As du Fallafel (sample row)",
+    "continent": "Europe",
+    "country": "France",
+    "city": "Paris",
+    "price": "$",
+    "notes": "Sample data. The Marais falafel line is worth it.",
+    "photos": []
+  }
+]
