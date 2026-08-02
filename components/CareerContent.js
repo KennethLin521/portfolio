@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useLang, pick } from "../lib/i18n";
 import { profile } from "../content/profile";
 import { experience, education, leadership } from "../content/experience";
@@ -10,25 +11,69 @@ import Reveal from "./Reveal";
 
 const SECTIONS = ["experience", "projects", "education", "skills", "leadership"];
 
-function TimelineItem({ item, lang }) {
+// One expandable timeline entry: collapsed = title + one-line summary,
+// expanded = full bullets + tool chips.
+function TimelineItem({ item, lang, open, onToggle }) {
   return (
     <article className="timeline-item">
-      <p className="date">{pick(item.date, lang)}</p>
-      <h3>{pick(item.title, lang)}</h3>
-      <p className="org">
-        {item.org} · {pick(item.location, lang)}
-      </p>
-      <ul>
-        {item.bullets.map((b) => (
-          <li key={b.en}>{pick(b, lang)}</li>
-        ))}
-      </ul>
-      <div className="chip-row">
-        {item.tools.map((t) => (
-          <span className="chip" key={t}>
-            {t}
+      <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
+        <span className="xp-head">
+          <span className="date">{pick(item.date, lang)}</span>
+          <span className="xp-title">{pick(item.title, lang)}</span>
+          <span className="org">
+            {item.org} · {pick(item.location, lang)}
           </span>
-        ))}
+          <span className="xp-summary">{pick(item.summary, lang)}</span>
+        </span>
+        <span className={`caret${open ? " is-open" : ""}`}>▶</span>
+      </button>
+      <div className={`xp-body${open ? " is-open" : ""}`}>
+        <div>
+          <ul>
+            {item.bullets.map((b) => (
+              <li key={b.en}>{pick(b, lang)}</li>
+            ))}
+          </ul>
+          <div className="chip-row">
+            {item.tools.map((t) => (
+              <span className="chip" key={t}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+// One expandable project card: collapsed = name + tagline, expanded =
+// optional image + full description + tags.
+function ProjectCard({ project, lang, open, onToggle }) {
+  return (
+    <article className="project-card">
+      <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
+        <span className="xp-head">
+          <span className="date">{pick(project.date, lang)}</span>
+          <span className="xp-title xp-title--serif">{project.name}</span>
+          <span className="xp-summary">{pick(project.tagline, lang)}</span>
+        </span>
+        <span className={`caret${open ? " is-open" : ""}`}>▶</span>
+      </button>
+      <div className={`xp-body${open ? " is-open" : ""}`}>
+        <div>
+          {project.image && (
+            <img className="proj-img" src={project.image} alt={project.name} />
+          )}
+          <p className="proj-desc">{pick(project.description, lang)}</p>
+          <div className="chip-row">
+            {project.tags.map((tag) => (
+              <span className="chip" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </article>
   );
@@ -37,12 +82,34 @@ function TimelineItem({ item, lang }) {
 export default function CareerContent() {
   const { lang } = useLang();
   const t = ui.career;
+  const [open, setOpen] = useState(() => new Set());
+
+  const toggle = (key) =>
+    setOpen((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   return (
     <div className="container">
-      <header className="page-header">
-        <p className="kicker kicker--eng">{t.kicker}</p>
-        <h1>{pick(t.title, lang)}</h1>
+      {/* Header: intro text sits beside the portrait — no dead whitespace */}
+      <header className="page-header career-header">
+        <div className="career-header-text">
+          <p className="kicker kicker--eng">{t.kicker}</p>
+          <h1>{pick(t.title, lang)}</h1>
+          <p className="lede">{pick(profile.careerBio, lang)}</p>
+          <a
+            className="text-link cta"
+            href={profile.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {pick(t.linkedinCta, lang)}
+          </a>
+        </div>
+        <img className="portrait" src="/images/linkedin.jpg" alt="Kenneth Lin" />
       </header>
 
       {/* In-page anchor nav — sticks under the main nav on scroll */}
@@ -54,32 +121,25 @@ export default function CareerContent() {
         ))}
       </nav>
 
-      <div className="intro-row">
-        <img src="/images/linkedin.jpg" alt="Kenneth Lin" />
-        <div className="bio">
-          <p>{pick(profile.careerBio, lang)}</p>
-          <a
-            className="text-link cta"
-            href={profile.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {pick(t.linkedinCta, lang)}
-          </a>
-        </div>
-      </div>
-
       <section className="section" id="experience">
         <div className="section-label">
           <span className="num">01</span>
           <h2>{pick(t.sections.experience, lang)}</h2>
         </div>
         <div className="timeline">
-          {experience.map((job) => (
-            <Reveal key={job.title.en + job.date.en}>
-              <TimelineItem item={job} lang={lang} />
-            </Reveal>
-          ))}
+          {experience.map((job) => {
+            const key = job.title.en + job.date.en;
+            return (
+              <Reveal key={key}>
+                <TimelineItem
+                  item={job}
+                  lang={lang}
+                  open={open.has(key)}
+                  onToggle={() => toggle(key)}
+                />
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -91,18 +151,12 @@ export default function CareerContent() {
         <div className="project-grid">
           {projects.map((p) => (
             <Reveal key={p.name}>
-              <article className="project-card">
-                <p className="date">{pick(p.date, lang)}</p>
-                <h3>{p.name}</h3>
-                <p>{pick(p.description, lang)}</p>
-                <div className="chip-row">
-                  {p.tags.map((tag) => (
-                    <span className="chip" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
+              <ProjectCard
+                project={p}
+                lang={lang}
+                open={open.has(p.name)}
+                onToggle={() => toggle(p.name)}
+              />
             </Reveal>
           ))}
         </div>
@@ -167,11 +221,19 @@ export default function CareerContent() {
           <h2>{pick(t.sections.leadership, lang)}</h2>
         </div>
         <div className="timeline">
-          {leadership.map((item) => (
-            <Reveal key={item.title.en}>
-              <TimelineItem item={item} lang={lang} />
-            </Reveal>
-          ))}
+          {leadership.map((item) => {
+            const key = item.title.en;
+            return (
+              <Reveal key={key}>
+                <TimelineItem
+                  item={item}
+                  lang={lang}
+                  open={open.has(key)}
+                  onToggle={() => toggle(key)}
+                />
+              </Reveal>
+            );
+          })}
         </div>
       </section>
     </div>

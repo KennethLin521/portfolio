@@ -483,28 +483,93 @@ button {
   color: var(--eng);
 }
 
-.intro-row {
+/* Header row: intro text on the left, portrait on the right */
+.career-header {
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  padding-bottom: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
-.intro-row img {
-  width: 128px;
-  height: 128px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-}
-
-.intro-row .bio {
+.career-header-text {
   max-width: 60ch;
 }
 
-.intro-row .bio .cta {
+.career-header-text .cta {
   display: inline-block;
-  margin-top: 0.9rem;
+  margin-top: 1.1rem;
+}
+
+.portrait {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+/* Expandable entries (experience + projects): the whole header is a button;
+   the body opens with a grid-rows transition */
+.xp-toggle {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.xp-toggle .caret {
+  margin-top: 0.5rem;
+}
+
+.xp-toggle:hover .xp-title {
+  color: var(--eng);
+}
+
+.xp-head {
+  display: block;
+}
+
+.xp-head .date,
+.xp-head .org {
+  display: block;
+}
+
+.xp-title {
+  display: block;
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
+  transition: color 0.15s ease;
+}
+
+.xp-title--serif {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 550;
+}
+
+.xp-summary {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+.xp-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.xp-body > div {
+  overflow: hidden;
+}
+
+.xp-body.is-open {
+  grid-template-rows: 1fr;
 }
 
 .timeline {
@@ -540,12 +605,6 @@ button {
   text-transform: uppercase;
 }
 
-.timeline-item h3 {
-  font-size: 1.18rem;
-  font-weight: 600;
-  margin-top: 0.35rem;
-}
-
 .timeline-item .org {
   color: var(--muted);
   font-size: 0.95rem;
@@ -553,7 +612,7 @@ button {
 }
 
 .timeline-item ul {
-  margin: 0.8rem 0 0 1.1rem;
+  margin: 1rem 0 0 1.1rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -568,25 +627,25 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+  align-items: start; /* cards expand independently */
 }
 
 .project-card {
-  height: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
   padding: 1.8rem;
 }
 
-.project-card h3 {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 550;
-  margin-top: 0.5rem;
+.proj-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  margin-top: 1rem;
 }
 
-.project-card p:not(.date) {
-  margin-top: 0.7rem;
+.proj-desc {
+  margin-top: 1rem;
   color: var(--muted);
   font-size: 0.97rem;
 }
@@ -974,6 +1033,10 @@ button {
     transition: none;
   }
 
+  .xp-body {
+    transition: none;
+  }
+
   .u-food {
     background-size: 100% 3px;
     animation: none;
@@ -996,8 +1059,15 @@ button {
     aspect-ratio: 4 / 3;
   }
 
-  .intro-row {
-    flex-direction: column;
+  .career-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .portrait {
+    width: 128px;
+    height: 128px;
   }
 
   .education-card {

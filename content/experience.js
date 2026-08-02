@@ -13,6 +13,10 @@ export const experience = [
     },
     org: "Credo Semiconductor",
     location: { en: "San Jose, CA", zh: "加州聖荷西" },
+    summary: {
+      en: "High-speed circuit characterization and RTL-to-GDSII flow automation on advanced nodes.",
+      zh: "先進製程上的高速電路特性分析與 RTL-to-GDSII 流程自動化。",
+    },
     bullets: [
       {
         en: "Delivered testbenches to characterize high-speed circuits across frequency, timing, and power metrics.",
@@ -41,6 +45,10 @@ export const experience = [
     },
     org: "University of Massachusetts Amherst",
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
+    summary: {
+      en: "FPGA security labs and office hours for 120 students.",
+      zh: "FPGA 安全實驗與 120 名學生的 Office Hour。",
+    },
     bullets: [
       {
         en: "Hosted biweekly office hours, supporting 120 students on FPGA security labs, quizzes, and homework.",
@@ -66,6 +74,10 @@ export const experience = [
     title: { en: "Foundry Engineer Intern", zh: "晶圓代工實習工程師" },
     org: "Credo Semiconductor",
     location: { en: "San Jose, CA", zh: "加州聖荷西" },
+    summary: {
+      en: "PAM4 channel modeling, PLL co-simulation, and SerDes tool migration.",
+      zh: "PAM4 通道模擬、PLL 協同模擬與 SerDes 工具遷移。",
+    },
     bullets: [
       {
         en: "Simulated PAM4 channels in MATLAB with FFE/DFE equalization, analyzing eye openings and ADC slicer offset.",
@@ -91,6 +103,10 @@ export const experience = [
     title: { en: "Assistant Researcher", zh: "研究助理" },
     org: "Emerging Embedded Technologies Lab",
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
+    summary: {
+      en: "Mixed Reality sensor-data capture and user-identification research.",
+      zh: "混合實境感測資料擷取與使用者識別研究。",
+    },
     bullets: [
       {
         en: "Researched methods of capturing Mixed Reality (MR) headset sensor data.",
@@ -161,6 +177,10 @@ export const leadership = [
     },
     org: "University of Massachusetts Amherst",
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
+    summary: {
+      en: "Weekly cooking sessions for 20 members — plus a Discord/Jira bot and a $17k budget.",
+      zh: "每週帶 20 名成員下廚——外加 Discord/Jira 機器人與 1.7 萬美元預算。",
+    },
     bullets: [
       {
         en: "Coordinated and hosted weekly cooking sessions, directing a team of 20 members in an industrial-grade kitchen.",
