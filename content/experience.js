@@ -23,23 +23,40 @@ export const experience = [
     },
     bullets: [
       {
-        en: "Delivered testbenches to characterize high-speed circuits across frequency, timing, and power metrics.",
-        zh: "建置測試平台，針對高速電路進行頻率、時序與功耗特性分析。",
+        en: "Brought up an RTL-to-GDSII Fusion Compiler flow on an advanced process node, delivering the Tcl and Makefile infrastructure, NDM/DB library generation, and cross-tool consistency checks against Verdi.",
+        zh: "於先進製程節點建置 Fusion Compiler 的 RTL-to-GDSII 流程，交付 Tcl 與 Makefile 架構、NDM/DB 程式庫產生，並以 Verdi 進行跨工具一致性檢查。",
       },
       {
-        en: "Optimized the Rx signal chain (CTLE, Sample & Hold, ADC) with ASO.ai to enhance signal integrity and performance.",
-        zh: "使用 ASO.ai 最佳化 Rx 訊號鏈（CTLE、Sample & Hold、ADC），提升訊號完整性與效能。",
+        en: "Ran the digital middle-end from design initialization through clock tree synthesis, routing, and chip finish; triaged setup and hold violations at scale with Bash-extracted timing reports, and delivered power measurement data.",
+        zh: "執行數位中段流程，從設計初始化、時脈樹合成、繞線到 chip finish；以 Bash 擷取時序報告、大規模分類 setup 與 hold 違規，並交付功耗量測數據。",
       },
       {
-        en: "Migrating a legacy Fusion Compiler flow to an advanced PDK, reading RTL designs and compiling NDMs with Tcl.",
-        zh: "將舊有 Fusion Compiler 流程遷移至先進 PDK，解讀 RTL 設計並以 Tcl 編譯 NDM。",
+        en: "Root-caused DRC density violations to placement blockages, then scripted boundary-aware blockage insertion and FEOL/BEOL-split filler flows, verified through ICV runs.",
+        zh: "找出 DRC 密度違規肇因於 placement blockage，撰寫 boundary-aware blockage 與 FEOL/BEOL 分層 filler 插入腳本，並經 ICV 驗證。",
       },
       {
-        en: "Developed a MATLAB-PrimeWave pipeline for automated waveform post-processing, accelerating schematic validation.",
-        zh: "開發 MATLAB-PrimeWave 自動化波形後處理流程，加速電路驗證。",
+        en: "Debugged SAR ADC simulation migration across process nodes in Custom Compiler: SNDR/ENOB comparisons, ASO.ai corner and VT-flavor sweeps, and a Verilog-A DAC modeled from CDAC weights.",
+        zh: "於 Custom Compiler 除錯跨製程節點的 SAR ADC 模擬遷移：SNDR/ENOB 比較、ASO.ai corner 與 VT 類型掃描，並依 CDAC 權重建模 Verilog-A DAC。",
+      },
+      {
+        en: "Wrote a sampling-delay-aware MATLAB flow to score SNDR across the CTLE, sample-and-hold, and ADC chain, verifying the top level with Fourier analysis.",
+        zh: "撰寫考量取樣延遲的 MATLAB 流程，評估 CTLE、取樣電路與 ADC 鏈的 SNDR，並以傅立葉分析驗證頂層。",
+      },
+      {
+        en: "Enabled a Synopsys-to-MATLAB analysis pipeline with the MATLAB Engine API, replacing manual waveform exports with automatic post-simulation analysis; demoed to design leadership.",
+        zh: "以 MATLAB Engine API 建立 Synopsys 模擬至 MATLAB 的自動化分析管線，取代人工波形匯出，並向設計部門主管展示。",
       },
     ],
-    tools: ["Fusion Compiler", "PrimeWave", "MATLAB", "Tcl", "ASO.ai"],
+    tools: [
+      "Fusion Compiler",
+      "Custom Compiler",
+      "ASO.ai",
+      "MATLAB",
+      "Tcl",
+      "Bash",
+      "Verilog-A",
+      "ICV",
+    ],
   },
   {
     date: { en: "Sep 2024 to Dec 2024", zh: "2024年9月 至 12月" },

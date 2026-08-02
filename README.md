@@ -42,7 +42,15 @@ One flat Google Sheet, columns:
 |------|-----------|---------|------|-------|-------|-------------|
 
 - **Price**: `$` / `$$` / `$$$`, relative to the country.
-- **Photo Links**: paste one or more URLs, separated by commas or new lines.
+- **Photo Links**: one photo per line, optional caption after a `|`:
+  ```
+  https://res.cloudinary.com/<cloud>/image/upload/v1/xlb.jpg | The xiao long bao that started it all
+  https://res.cloudinary.com/<cloud>/image/upload/v1/interior.jpg
+  ```
+  Photos render as a captioned gallery on the restaurant's page. Cloudinary
+  URLs are automatically served as resized/compressed modern formats
+  (upload full-res, the site handles the rest). Non-image links (e.g. a
+  Google Photos album page) won't render as pictures.
 - No merged cells, no per-region tabs — the site groups and counts rows
   automatically.
 
