@@ -1,17 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { useLang, pick } from "../lib/i18n";
+import { ui } from "../content/strings";
 
 export default function NotFound() {
+  const { lang } = useLang();
   return (
     <div className="container">
       <header className="page-header">
         <p className="kicker">404</p>
-        <h1>Nothing on the menu here.</h1>
+        <h1>{pick(ui.notFound.title, lang)}</h1>
         <p className="lede">
-          This page doesn&rsquo;t exist —{" "}
+          {pick(ui.notFound.body, lang)}
           <Link href="/" className="text-link">
-            head back home
+            {pick(ui.notFound.homeLink, lang)}
           </Link>
-          .
+          {lang === "zh" ? "。" : "."}
         </p>
       </header>
     </div>

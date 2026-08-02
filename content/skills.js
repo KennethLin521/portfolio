@@ -1,45 +1,32 @@
 // ---------------------------------------------------------------------------
-// Skill groups on the Engineering page. Plain chips, grouped by category.
+// Skill groups on the Career page (mirrors the 2025 resume).
 // ---------------------------------------------------------------------------
 
 export const skillGroups = [
   {
-    label: "Languages",
-    items: [
-      "SystemVerilog",
-      "Verilog",
-      "Python",
-      "MATLAB",
-      "C",
-      "Bash",
-      "TCL",
-      "Perl",
-      "RISC-V ISA",
-      "SQL",
-    ],
+    label: { en: "Languages", zh: "程式語言" },
+    items: ["MATLAB", "Tcl", "Bash", "SystemVerilog", "Python"],
   },
   {
-    label: "EDA & Silicon",
+    label: { en: "EDA Tools", zh: "EDA 工具" },
     items: [
+      "Simulink",
       "Synopsys Design Compiler",
       "Synopsys Custom Compiler",
+      "Fusion Compiler",
       "HSPICE",
-      "Verdi",
       "Cadence Virtuoso",
       "Cadence Innovus",
       "Pegasus",
       "ModelSim",
-      "Quartus Prime",
-      "KiCad",
-      "Simulink",
     ],
   },
   {
-    label: "Developer Tools",
-    items: ["Git", "Linux / RHEL8", "MS Azure", "Android Studio", "Adobe XD"],
+    label: { en: "Developer Tools", zh: "開發工具" },
+    items: ["Git", "Quartus Prime", "Android Studio", "Adobe XD"],
   },
   {
-    label: "Other",
-    items: ["TensorFlow", "Unity", "Wireshark", "JMP"],
+    label: { en: "Other", zh: "其他" },
+    items: ["RHEL8", "TensorFlow", "Unity", "Wireshark", "JMP", "MS Office"],
   },
 ];

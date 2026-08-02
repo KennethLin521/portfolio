@@ -1,4 +1,5 @@
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { LanguageProvider } from "../lib/i18n";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import "./globals.css";
@@ -31,9 +32,18 @@ export default function RootLayout({ children }) {
       className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
     >
       <body>
-        <SiteNav />
-        <main className="site-main">{children}</main>
-        <SiteFooter />
+        {/* Marks that JS is running — scroll-reveal styles only hide content
+            under .js, so a no-JS visitor still sees everything */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js');",
+          }}
+        />
+        <LanguageProvider>
+          <SiteNav />
+          <main className="site-main">{children}</main>
+          <SiteFooter />
+        </LanguageProvider>
       </body>
     </html>
   );

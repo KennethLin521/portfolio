@@ -1,6 +1,11 @@
+"use client";
+
+import { useLang, pick } from "../lib/i18n";
 import { profile } from "../content/profile";
+import { ui } from "../content/strings";
 
 export default function SiteFooter() {
+  const { lang } = useLang();
   const { links } = profile;
   const external = [
     ["LinkedIn", links.linkedin],
@@ -14,11 +19,8 @@ export default function SiteFooter() {
     <footer className="footer" id="contact">
       <div className="container footer-inner">
         <div>
-          <p className="footer-kicker">GET IN TOUCH</p>
-          <p className="footer-blurb">
-            The fastest way to reach me is LinkedIn. Restaurant arguments also
-            welcome.
-          </p>
+          <p className="footer-kicker">{pick(ui.footer.kicker, lang)}</p>
+          <p className="footer-blurb">{pick(ui.footer.blurb, lang)}</p>
         </div>
         <nav className="footer-links" aria-label="Social links">
           {external.map(([label, url]) => (
@@ -29,7 +31,10 @@ export default function SiteFooter() {
         </nav>
       </div>
       <div className="container footer-meta">
-        <span>© {new Date().getFullYear()} Kenneth Lin</span>
+        {/* suppressHydrationWarning: static HTML may carry last deploy's year */}
+        <span suppressHydrationWarning>
+          © {new Date().getFullYear()} Kenneth Lin
+        </span>
         <span>Next.js · Vercel</span>
       </div>
     </footer>
