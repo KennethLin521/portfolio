@@ -9,7 +9,7 @@ import Reveal from "./Reveal";
 // The /food page: intro, socials, the region → city list, and the kitchen
 // gallery. City/country/continent names come straight from the sheet and are
 // intentionally not translated.
-export default function FoodContent({ tree, source, stats }) {
+export default function FoodContent({ tree, source }) {
   const { lang } = useLang();
   const t = ui.food;
   const { links } = profile;
@@ -47,7 +47,6 @@ export default function FoodContent({ tree, source, stats }) {
           <h2>{pick(t.listTitle, lang)}</h2>
         </div>
         <p className="list-blurb">{pick(t.listBlurb, lang)}</p>
-        <p className="stats-line">{t.stats(lang, stats)}</p>
         {source === "sample" && (
           <div className="sample-banner">{pick(t.sampleBanner, lang)}</div>
         )}

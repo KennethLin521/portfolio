@@ -569,6 +569,30 @@ button {
   grid-template-rows: 1fr;
 }
 
+/* Expanded body: bullets left, org logo right */
+.xp-body-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.xp-body-main {
+  flex: 1;
+}
+
+.xp-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: 1rem;
+  /* light plate so dark/transparent logos read on the dark theme */
+  background: #f5f2ea;
+  border-radius: 8px;
+  padding: 6px;
+}
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -815,34 +839,27 @@ button {
   margin-bottom: 4rem;
 }
 
-/* Easter egg: type "ollie" and he runs across the bottom of the screen */
-.ollie-runner {
+/* Easter egg: click "Kenneth Lin" in the nav 5 times. Ollie fades in over
+   90s; past the halfway point he sits on top of every button and the only
+   way out is a page reload. Swap the image by replacing olie.jpg (or point
+   this at a dedicated takeover photo). */
+.ollie-takeover {
   position: fixed;
-  bottom: 14px;
-  left: -170px;
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--food);
-  z-index: 100;
-  animation: ollie-run 4s linear forwards;
+  inset: 0;
+  z-index: 200;
+  background: url("/images/olie.jpg") center / cover no-repeat;
+  opacity: 0;
+  animation: ollie-takeover-fade 90s linear forwards;
+  pointer-events: none;
 }
 
-@keyframes ollie-run {
-  from {
-    transform: translateX(0) rotate(0deg);
-  }
+.ollie-takeover.is-blocking {
+  pointer-events: auto;
+}
+
+@keyframes ollie-takeover-fade {
   to {
-    transform: translateX(calc(100vw + 340px)) rotate(720deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ollie-runner {
-    left: 50%;
-    transform: translateX(-50%);
-    animation: none;
+    opacity: 1;
   }
 }
 

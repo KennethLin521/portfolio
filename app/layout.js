@@ -2,7 +2,7 @@ import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { LanguageProvider } from "../lib/i18n";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
-import OllieEasterEgg from "../components/OllieEasterEgg";
+import OllieTakeover from "../components/OllieTakeover";
 import "./globals.css";
 
 // Three-font system, one job each:
@@ -40,14 +40,14 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html:
               "document.documentElement.classList.add('js');" +
-              "console.log('%cchips + \\u5403 \\u00b7 psst: type ollie anywhere \\ud83d\\udc15','color:#e07a4f;font-family:monospace;font-size:12px');",
+              "console.log('%cchips + \\u5403 \\u00b7 \\ud83d\\udc15 x5','color:#e07a4f;font-family:monospace;font-size:12px');",
           }}
         />
         <LanguageProvider>
           <SiteNav />
           <main className="site-main">{children}</main>
           <SiteFooter />
-          <OllieEasterEgg />
+          <OllieTakeover />
         </LanguageProvider>
       </body>
     </html>

@@ -31,17 +31,28 @@ function TimelineItem({ item, lang, open, onToggle }) {
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
         <div>
-          <ul>
-            {item.bullets.map((b) => (
-              <li key={b.en}>{pick(b, lang)}</li>
-            ))}
-          </ul>
-          <div className="chip-row">
-            {item.tools.map((t) => (
-              <span className="chip" key={t}>
-                {t}
-              </span>
-            ))}
+          <div className="xp-body-inner">
+            <div className="xp-body-main">
+              <ul>
+                {item.bullets.map((b) => (
+                  <li key={b.en}>{pick(b, lang)}</li>
+                ))}
+              </ul>
+              <div className="chip-row">
+                {item.tools.map((t) => (
+                  <span className="chip" key={t}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {item.logo && (
+              <img
+                className="xp-logo"
+                src={item.logo}
+                alt={`${item.org} logo`}
+              />
+            )}
           </div>
         </div>
       </div>

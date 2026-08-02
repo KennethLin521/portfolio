@@ -14,13 +14,5 @@ export default async function FoodPage() {
   const cityIndex = buildCityIndex(rows);
   const tree = buildTree(cityIndex);
 
-  const stats = {
-    restaurants: rows.length,
-    cities: cityIndex.size,
-    // distinct country names — a country spanning two continents (or a row
-    // with a blank Continent cell) must not be counted twice
-    countries: new Set([...cityIndex.values()].map((c) => c.country)).size,
-  };
-
-  return <FoodContent tree={tree} source={source} stats={stats} />;
+  return <FoodContent tree={tree} source={source} />;
 }

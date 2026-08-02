@@ -50,7 +50,11 @@ export default function SiteNav() {
     <>
     <header className="nav">
       <div className="container nav-inner">
-        <Link href="/" className="nav-name">
+        <Link
+          href="/"
+          className="nav-name"
+          onClick={() => window.dispatchEvent(new CustomEvent("kl-name-click"))}
+        >
           Kenneth Lin
         </Link>
         <nav className="nav-links" aria-label="Main navigation">

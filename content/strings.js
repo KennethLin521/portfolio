@@ -65,10 +65,10 @@ export const ui = {
   food: {
     kicker: "02 / FOOD",
     title: { en: "The other half", zh: "吃喝的那一半" },
-    listTitle: { en: "The Restaurant List", zh: "餐廳清單" },
+    listTitle: { en: "Restaurants", zh: "餐廳" },
     listBlurb: {
-      en: "A list of the memorable restaurants I have eaten at around the world. Click a city to see every spot.",
-      zh: "我在世界各地吃過、值得記住的餐廳清單。點進城市看看每一家店。",
+      en: "A list of memorable restaurants I’ve eaten at.",
+      zh: "我吃過、值得記住的餐廳。",
     },
     sampleBanner: {
       en: "Showing sample data. The real list is coming soon.",
