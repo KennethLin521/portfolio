@@ -1,36 +1,36 @@
 [
   {
-    "name": "Din Tai Fung (sample row)",
+    "name": "鼎泰豐 (sample row)",
     "continent": "Asia",
-    "country": "Taiwan",
-    "city": "Taipei",
+    "country": "台灣",
+    "city": "台北",
     "price": "$$",
-    "notes": "Sample data — connect your Google Sheet to replace this. Xiao long bao benchmark.",
+    "notes": "Sample data. Connect your Google Sheet to replace this. Xiao long bao benchmark.",
     "photos": []
   },
   {
-    "name": "Yongkang Beef Noodle (sample row)",
+    "name": "永康牛肉麵 (sample row)",
     "continent": "Asia",
-    "country": "Taiwan",
-    "city": "Taipei",
+    "country": "台灣",
+    "city": "台北",
     "price": "$",
     "notes": "Sample data. Braised beef noodle soup, the classic.",
     "photos": []
   },
   {
-    "name": "Raohe Pepper Buns (sample row)",
+    "name": "福州世祖胡椒餅 (sample row)",
     "continent": "Asia",
-    "country": "Taiwan",
-    "city": "Taipei",
+    "country": "台灣",
+    "city": "台北",
     "price": "$",
-    "notes": "Sample data. Charcoal-oven pepper pork buns at the night market gate.",
+    "notes": "Sample data. Charcoal-oven pepper pork buns at the Raohe night market gate.",
     "photos": []
   },
   {
-    "name": "Du Hsiao Yueh (sample row)",
+    "name": "度小月 (sample row)",
     "continent": "Asia",
-    "country": "Taiwan",
-    "city": "Tainan",
+    "country": "台灣",
+    "city": "台南",
     "price": "$$",
     "notes": "Sample data. Danzai noodles since 1895.",
     "photos": []
@@ -38,8 +38,8 @@
   {
     "name": "Phở Gia Truyền (sample row)",
     "continent": "Asia",
-    "country": "Vietnam",
-    "city": "Hanoi",
+    "country": "Việt Nam",
+    "city": "Hà Nội",
     "price": "$",
     "notes": "Sample data. Beef phở, no menu, line out the door by 7am.",
     "photos": []
@@ -47,8 +47,8 @@
   {
     "name": "Bún Chả Hương Liên (sample row)",
     "continent": "Asia",
-    "country": "Vietnam",
-    "city": "Hanoi",
+    "country": "Việt Nam",
+    "city": "Hà Nội",
     "price": "$",
     "notes": "Sample data. The Obama bún chả spot.",
     "photos": []
@@ -56,8 +56,8 @@
   {
     "name": "Cơm Tấm Ba Ghiền (sample row)",
     "continent": "Asia",
-    "country": "Vietnam",
-    "city": "Ho Chi Minh City",
+    "country": "Việt Nam",
+    "city": "TP. Hồ Chí Minh",
     "price": "$",
     "notes": "Sample data. Broken rice with the char-grilled pork chop.",
     "photos": []
@@ -65,8 +65,8 @@
   {
     "name": "Bánh Mì Huỳnh Hoa (sample row)",
     "continent": "Asia",
-    "country": "Vietnam",
-    "city": "Ho Chi Minh City",
+    "country": "Việt Nam",
+    "city": "TP. Hồ Chí Minh",
     "price": "$",
     "notes": "Sample data. The maximalist bánh mì.",
     "photos": []

@@ -8,7 +8,7 @@
 
 export const projects = [
   {
-    name: "PAM4 DSP Equalizer — 3-tap FFE / 1-tap DFE",
+    name: "PAM4 DSP Equalizer (3-tap FFE / 1-tap DFE)",
     date: { en: "Summer 2026", zh: "2026 夏" },
     tagline: {
       en: "Adaptive FFE/DFE equalizer, from MATLAB model to signed-off GDSII.",

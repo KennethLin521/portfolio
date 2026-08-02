@@ -23,7 +23,10 @@ function TimelineItem({ item, lang, open, onToggle }) {
           <span className="org">
             {item.org} · {pick(item.location, lang)}
           </span>
-          <span className="xp-summary">{pick(item.summary, lang)}</span>
+          {/* Summary is for skimming; it hands off to the full bullets */}
+          {!open && (
+            <span className="xp-summary">{pick(item.summary, lang)}</span>
+          )}
         </span>
         <span className={`caret${open ? " is-open" : ""}`}>▶</span>
       </button>
@@ -56,7 +59,9 @@ function ProjectCard({ project, lang, open, onToggle }) {
         <span className="xp-head">
           <span className="date">{pick(project.date, lang)}</span>
           <span className="xp-title xp-title--serif">{project.name}</span>
-          <span className="xp-summary">{pick(project.tagline, lang)}</span>
+          {!open && (
+            <span className="xp-summary">{pick(project.tagline, lang)}</span>
+          )}
         </span>
         <span className={`caret${open ? " is-open" : ""}`}>▶</span>
       </button>

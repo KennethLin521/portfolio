@@ -6,7 +6,7 @@
 
 export const experience = [
   {
-    date: { en: "Jun 2025 – Present", zh: "2025年6月 – 至今" },
+    date: { en: "Jun 2025 to Present", zh: "2025年6月 至今" },
     title: {
       en: "Technology Design Co-Optimization Engineer Intern",
       zh: "技術設計協同最佳化實習工程師",
@@ -31,14 +31,14 @@ export const experience = [
         zh: "將舊有 Fusion Compiler 流程遷移至先進 PDK，解讀 RTL 設計並以 Tcl 編譯 NDM。",
       },
       {
-        en: "Developed a MATLAB–PrimeWave pipeline for automated waveform post-processing, accelerating schematic validation.",
-        zh: "開發 MATLAB–PrimeWave 自動化波形後處理流程，加速電路驗證。",
+        en: "Developed a MATLAB-PrimeWave pipeline for automated waveform post-processing, accelerating schematic validation.",
+        zh: "開發 MATLAB-PrimeWave 自動化波形後處理流程，加速電路驗證。",
       },
     ],
     tools: ["Fusion Compiler", "PrimeWave", "MATLAB", "Tcl", "ASO.ai"],
   },
   {
-    date: { en: "Sep 2024 – Dec 2024", zh: "2024年9月 – 12月" },
+    date: { en: "Sep 2024 to Dec 2024", zh: "2024年9月 至 12月" },
     title: {
       en: "Undergraduate Instructional Assistant",
       zh: "大學部教學助理",
@@ -59,7 +59,7 @@ export const experience = [
         zh: "帶領實驗課程，在 FPGA 上實作電路並整合 Quartus Prime 中的 Nios II 處理器。",
       },
       {
-        en: "Facilitated student–professor communication to resolve issues and ensure smooth course delivery.",
+        en: "Facilitated student-professor communication to resolve issues and ensure smooth course delivery.",
         zh: "促進學生與教授之間的溝通，確保課程順利進行。",
       },
       {
@@ -70,7 +70,7 @@ export const experience = [
     tools: ["FPGA", "Quartus Prime", "Nios II"],
   },
   {
-    date: { en: "May 2024 – Aug 2024", zh: "2024年5月 – 8月" },
+    date: { en: "May 2024 to Aug 2024", zh: "2024年5月 至 8月" },
     title: { en: "Foundry Engineer Intern", zh: "晶圓代工實習工程師" },
     org: "Credo Semiconductor",
     location: { en: "San Jose, CA", zh: "加州聖荷西" },
@@ -99,7 +99,7 @@ export const experience = [
     tools: ["MATLAB", "Simulink", "Verilog-A", "Synopsys CC", "Tcl → Perl"],
   },
   {
-    date: { en: "Sep 2023 – Dec 2023", zh: "2023年9月 – 12月" },
+    date: { en: "Sep 2023 to Dec 2023", zh: "2023年9月 至 12月" },
     title: { en: "Assistant Researcher", zh: "研究助理" },
     org: "Emerging Embedded Technologies Lab",
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
@@ -139,7 +139,7 @@ export const education = [
       en: "M.S. in Computer Engineering",
       zh: "電腦工程碩士",
     },
-    years: { en: "2025 – Present", zh: "2025 – 至今" },
+    years: { en: "2025 to Present", zh: "2025 至今" },
     logo: "/images/usc.png",
     coursework: [
       "VLSI System Design",
@@ -156,7 +156,7 @@ export const education = [
       en: "B.S. in Computer Engineering",
       zh: "電腦工程學士",
     },
-    years: { en: "2021 – 2025", zh: "2021 – 2025" },
+    years: { en: "2021 to 2025", zh: "2021 至 2025" },
     logo: "/images/umass.png",
     coursework: [
       "VLSI Design",
@@ -170,7 +170,7 @@ export const education = [
 
 export const leadership = [
   {
-    date: { en: "2022 – 2025", zh: "2022 – 2025" },
+    date: { en: "2022 to 2025", zh: "2022 至 2025" },
     title: {
       en: "Vice President & Co-founder, Culinary Arts Club",
       zh: "烹飪藝術社 副社長／共同創辦人",
@@ -178,8 +178,8 @@ export const leadership = [
     org: "University of Massachusetts Amherst",
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
     summary: {
-      en: "Weekly cooking sessions for 20 members — plus a Discord/Jira bot and a $17k budget.",
-      zh: "每週帶 20 名成員下廚——外加 Discord/Jira 機器人與 1.7 萬美元預算。",
+      en: "Weekly cooking sessions for 20 members, plus a Discord/Jira bot and a $17k budget.",
+      zh: "每週帶 20 名成員下廚，外加 Discord/Jira 機器人與 1.7 萬美元預算。",
     },
     bullets: [
       {

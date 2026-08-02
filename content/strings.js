@@ -6,7 +6,8 @@
 export const ui = {
   nav: {
     career: { en: "Career", zh: "職涯" },
-    food: { en: "Food", zh: "美食" },
+    food: { en: "Food", zh: "食" },
+    ollie: { en: "Ollie", zh: "Ollie" },
   },
 
   languageNames: {
@@ -15,11 +16,11 @@ export const ui = {
     vi: "Tiếng Việt",
   },
 
-  // Shown when someone picks Vietnamese — per Kenneth, with feeling.
-  viToast: "Xin lỗi — mình vẫn đang học! 😂",
+  // Shown when someone picks Vietnamese. Kenneth is still learning. 😂
+  viToast: "Xin lỗi, mình vẫn đang học! 😂",
 
   home: {
-    kicker: "KENNETH LIN — PORTFOLIO",
+    kicker: "KENNETH LIN / PORTFOLIO",
     careerCard: {
       label: "01 / CAREER",
       title: {
@@ -27,8 +28,8 @@ export const ui = {
         zh: "晶片、訊號，和我天天泡在裡面的工具。",
       },
       blurb: {
-        en: "Experience, projects, and education — from RTL to silicon.",
-        zh: "經歷、專案與學歷——從 RTL 到晶片。",
+        en: "Experience, projects, and education, from RTL to silicon.",
+        zh: "經歷、專案與學歷，從 RTL 到晶片。",
       },
       arrow: { en: "→ the work", zh: "→ 看正事" },
     },
@@ -65,17 +66,12 @@ export const ui = {
     title: { en: "The other half.", zh: "吃喝的那一半。" },
     listTitle: { en: "The Restaurant List", zh: "餐廳清單" },
     listBlurb: {
-      en: "Browse by region — click a city to see every spot.",
-      zh: "依地區瀏覽——點進城市看看每一家店。",
-    },
-    kitchenTitle: { en: "From the Kitchen", zh: "下廚日常" },
-    kitchenCaption: {
-      en: "SOME SPREADS FROM THE COLLEGE YEARS — MORE ON TIKTOK.",
-      zh: "大學時期的一些作品——更多內容在 TikTok。",
+      en: "A list of the memorable restaurants I have eaten at around the world. Click a city to see every spot.",
+      zh: "我在世界各地吃過、值得記住的餐廳清單。點進城市看看每一家店。",
     },
     sampleBanner: {
-      en: "Showing sample data — the real list is coming soon.",
-      zh: "目前顯示的是範例資料——真正的清單即將上線。",
+      en: "Showing sample data. The real list is coming soon.",
+      zh: "目前顯示的是範例資料，真正的清單即將上線。",
     },
     stats: (lang, { restaurants, cities, countries }) =>
       lang === "zh"
@@ -84,6 +80,11 @@ export const ui = {
     backToFood: { en: "← All regions", zh: "← 回所有地區" },
     restaurantCount: (lang, n) =>
       lang === "zh" ? `${n} 間餐廳` : n === 1 ? "1 restaurant" : `${n} restaurants`,
+  },
+
+  ollie: {
+    kicker: "03 / OLLIE",
+    title: { en: "This is my dog, Ollie.", zh: "這是我的狗，Ollie。" },
   },
 
   footer: {
@@ -96,7 +97,7 @@ export const ui = {
 
   notFound: {
     title: { en: "Nothing on the menu here.", zh: "這頁菜單上沒有東西。" },
-    body: { en: "This page doesn’t exist — ", zh: "這個頁面不存在——" },
-    homeLink: { en: "head back home", zh: "回首頁" },
+    body: { en: "This page does not exist. ", zh: "這個頁面不存在，" },
+    homeLink: { en: "Head back home", zh: "回首頁" },
   },
 };

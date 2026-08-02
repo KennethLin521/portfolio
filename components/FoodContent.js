@@ -86,18 +86,6 @@ export default function FoodContent({ tree, source, stats }) {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section-label">
-          <span className="num">02</span>
-          <h2>{pick(t.kitchenTitle, lang)}</h2>
-        </div>
-        <div className="gallery">
-          <img src="/images/cooking_image_1.jpg" alt="A spread Kenneth cooked" />
-          <img src="/images/cooking_image_2.jpg" alt="A spread Kenneth cooked" />
-          <img src="/images/cooking_image_3.jpg" alt="A spread Kenneth cooked" />
-        </div>
-        <p className="gallery-caption">{pick(t.kitchenCaption, lang)}</p>
-      </section>
     </div>
   );
 }

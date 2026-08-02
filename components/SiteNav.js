@@ -43,6 +43,7 @@ export default function SiteNav() {
   const links = [
     { href: "/career", label: pick(ui.nav.career, lang) },
     { href: "/food", label: pick(ui.nav.food, lang) },
+    { href: "/ollie", label: pick(ui.nav.ollie, lang) },
   ];
 
   return (
