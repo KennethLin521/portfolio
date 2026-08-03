@@ -33,8 +33,7 @@ export default function FoodContent({ tree, source }) {
     <div className="container casual">
       <header className="page-header">
         <p className="kicker kicker--food">{t.kicker}</p>
-        <h1>{pick(t.title, lang)}</h1>
-        <p className="lede">{pick(profile.foodBio, lang)}</p>
+        <h1 className="food-title">{pick(profile.foodBio, lang)}</h1>
       </header>
 
       <div className="social-row">
@@ -71,7 +70,10 @@ export default function FoodContent({ tree, source }) {
                   onClick={() => toggle(continent.name)}
                   aria-expanded={isOpen}
                 >
-                  <span className="continent-name">{continent.name}</span>
+                  <span className="continent-label">
+                    <span className="continent-name">{continent.name}</span>
+                    <span className="count">({continent.count})</span>
+                  </span>
                   <span className="continent-sign" aria-hidden="true">
                     {isOpen ? "−" : "+"}
                   </span>
