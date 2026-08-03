@@ -2,7 +2,7 @@
   {
     "name": "鼎泰豐 (sample row)",
     "continent": "Asia",
-    "country": "台灣",
+    "country": "臺灣",
     "city": "台北",
     "price": "$$",
     "notes": "Sample data. Connect your Google Sheet to replace this. Xiao long bao benchmark.",
@@ -11,7 +11,7 @@
   {
     "name": "永康牛肉麵 (sample row)",
     "continent": "Asia",
-    "country": "台灣",
+    "country": "臺灣",
     "city": "台北",
     "price": "$",
     "notes": "Sample data. Braised beef noodle soup, the classic.",
@@ -20,7 +20,7 @@
   {
     "name": "福州世祖胡椒餅 (sample row)",
     "continent": "Asia",
-    "country": "台灣",
+    "country": "臺灣",
     "city": "台北",
     "price": "$",
     "notes": "Sample data. Charcoal-oven pepper pork buns at the Raohe night market gate.",
@@ -29,7 +29,7 @@
   {
     "name": "度小月 (sample row)",
     "continent": "Asia",
-    "country": "台灣",
+    "country": "臺灣",
     "city": "台南",
     "price": "$$",
     "notes": "Sample data. Danzai noodles since 1895.",

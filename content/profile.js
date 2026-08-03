@@ -7,7 +7,7 @@ export const profile = {
   name: "Kenneth Lin",
 
   // Home page hero, kept intentionally simple.
-  heroTitle: { en: "Hi!", zh: "嗨！" },
+  heroTitle: { en: "HELLO!! 👋", zh: "哈囉！！👋" },
   subhead: {
     en: "Welcome to my website, feel free to look around!",
     zh: "歡迎來到我的網站，隨意逛逛！",

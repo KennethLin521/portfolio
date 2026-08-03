@@ -364,23 +364,6 @@ button {
   max-width: 18ch;
 }
 
-/* Accent underline that draws itself in on load */
-.u-food {
-  font-style: italic;
-  background-image: linear-gradient(var(--food), var(--food));
-  background-repeat: no-repeat;
-  background-position: 0 92%;
-  background-size: 0% 3px;
-  animation: draw-underline 0.7s ease 0.4s forwards;
-  padding-bottom: 2px;
-}
-
-@keyframes draw-underline {
-  to {
-    background-size: 100% 3px;
-  }
-}
-
 .hero .sub {
   margin-top: 1.4rem;
   max-width: 52ch;
@@ -448,8 +431,7 @@ button {
   text-transform: lowercase;
 }
 
-.casual .page-header h1,
-.casual .hero h1 {
+.casual .page-header h1 {
   font-style: italic;
 }
 
@@ -558,18 +540,31 @@ button {
   margin-top: 0.4rem;
 }
 
-.xp-body {
+/* Shared collapse animation: height eases via grid-rows, content fades in
+   slightly after. Used by career entries (.xp-body) and food folds (.fold). */
+.xp-body,
+.fold {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 0.72, 0.25, 1);
 }
 
-.xp-body > div {
+.xp-body > div,
+.fold > div {
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.xp-body.is-open {
+.xp-body.is-open,
+.fold.is-open {
   grid-template-rows: 1fr;
+}
+
+.xp-body.is-open > div,
+.fold.is-open > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.12s;
 }
 
 /* Expanded body: bullets left, org logo right */
@@ -923,7 +918,7 @@ button {
   border-radius: 8px;
   padding: 0.35rem;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
-  animation: menu-in 0.14s ease;
+  animation: menu-in 0.22s cubic-bezier(0.22, 0.72, 0.25, 1);
   display: flex;
   flex-direction: column;
 }
@@ -1061,13 +1056,11 @@ button {
     transition: none;
   }
 
-  .xp-body {
+  .xp-body,
+  .fold,
+  .xp-body > div,
+  .fold > div {
     transition: none;
-  }
-
-  .u-food {
-    background-size: 100% 3px;
-    animation: none;
   }
 }
 

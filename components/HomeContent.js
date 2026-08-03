@@ -12,9 +12,7 @@ export default function HomeContent() {
     <div className="casual">
       <section className="hero container">
         <p className="kicker">{ui.home.kicker}</p>
-        <h1>
-          <span className="u-food">{pick(profile.heroTitle, lang)}</span>
-        </h1>
+        <h1>{pick(profile.heroTitle, lang)}</h1>
         <p className="sub">{pick(profile.subhead, lang)}</p>
       </section>
 

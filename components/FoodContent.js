@@ -77,26 +77,29 @@ export default function FoodContent({ tree, source }) {
                   </span>
                 </button>
 
-                {isOpen &&
-                  continent.countries.map((country) => (
-                    <div className="country-block" key={country.name}>
-                      <div className="country-header">
-                        <h3>{country.name}</h3>
+                <div className={`fold${isOpen ? " is-open" : ""}`}>
+                  <div>
+                    {continent.countries.map((country) => (
+                      <div className="country-block" key={country.name}>
+                        <div className="country-header">
+                          <h3>{country.name}</h3>
+                        </div>
+                        <div className="city-links">
+                          {country.cities.map((city) => (
+                            <Link
+                              key={city.slug}
+                              href={`/food/${city.slug}`}
+                              className="city-link"
+                            >
+                              {city.name}
+                              <span className="count"> ({city.count})</span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                      <div className="city-links">
-                        {country.cities.map((city) => (
-                          <Link
-                            key={city.slug}
-                            href={`/food/${city.slug}`}
-                            className="city-link"
-                          >
-                            {city.name}
-                            <span className="count"> ({city.count})</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
               </section>
             );
           })}
