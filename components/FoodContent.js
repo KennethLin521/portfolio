@@ -1,18 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useLang, pick } from "../lib/i18n";
 import { profile } from "../content/profile";
 import { ui } from "../content/strings";
-import Reveal from "./Reveal";
 
-// The /food page: intro, socials, the region → city list, and the kitchen
-// gallery. City/country/continent names come straight from the sheet and are
-// intentionally not translated.
+// The /food page: intro, socials, and the region list. Continents fold out
+// to countries (labels) and cities (links). City/country/continent names
+// come straight from the sheet and are intentionally not translated.
 export default function FoodContent({ tree, source }) {
   const { lang } = useLang();
   const t = ui.food;
   const { links } = profile;
+  const [openContinents, setOpenContinents] = useState(() => new Set());
+
+  const toggle = (name) =>
+    setOpenContinents((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+
   const socials = [
     ["TikTok", links.tiktok],
     ["Instagram", links.instagram],
@@ -20,7 +30,7 @@ export default function FoodContent({ tree, source }) {
   ].filter(([, url]) => Boolean(url));
 
   return (
-    <div className="container">
+    <div className="container casual">
       <header className="page-header">
         <p className="kicker kicker--food">{t.kicker}</p>
         <h1>{pick(t.title, lang)}</h1>
@@ -52,37 +62,46 @@ export default function FoodContent({ tree, source }) {
         )}
 
         <div className="region-list">
-          {tree.map((continent) => (
-            <Reveal key={continent.name}>
-              <section className="continent">
-                <div className="continent-header">
-                  <h2>{continent.name}</h2>
-                </div>
-                {continent.countries.map((country) => (
-                  <div className="country-block" key={country.name}>
-                    <div className="country-header">
-                      <h3>{country.name}</h3>
+          {tree.map((continent) => {
+            const isOpen = openContinents.has(continent.name);
+            return (
+              <section className="continent" key={continent.name}>
+                <button
+                  className="continent-toggle"
+                  onClick={() => toggle(continent.name)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="continent-name">{continent.name}</span>
+                  <span className="continent-sign" aria-hidden="true">
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                {isOpen &&
+                  continent.countries.map((country) => (
+                    <div className="country-block" key={country.name}>
+                      <div className="country-header">
+                        <h3>{country.name}</h3>
+                      </div>
+                      <div className="city-links">
+                        {country.cities.map((city) => (
+                          <Link
+                            key={city.slug}
+                            href={`/food/${city.slug}`}
+                            className="city-link"
+                          >
+                            {city.name}
+                            <span className="count"> ({city.count})</span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                    <div className="city-links">
-                      {country.cities.map((city) => (
-                        <Link
-                          key={city.slug}
-                          href={`/food/${city.slug}`}
-                          className="city-link"
-                        >
-                          {city.name}
-                          <span className="count"> ({city.count})</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </section>
-            </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
-
     </div>
   );
 }

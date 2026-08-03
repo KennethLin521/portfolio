@@ -9,14 +9,14 @@ import { optimizedPhotoUrl } from "../lib/restaurants";
 // auto-optimized renditions.
 export default function RestaurantArticle({ city, restaurant }) {
   return (
-    <div className="container">
+    <div className="container casual">
       <article className="restaurant-article">
         <header className="page-header">
           <Link href={`/food/${city.slug}`} className="back-link">
             ← {city.name}
           </Link>
           <p className="kicker kicker--food">
-            {city.continent} / {city.country} / {city.name.toUpperCase()}
+            {city.continent} / {city.country} / {city.name}
           </p>
           <h1>{restaurant.name}</h1>
           {restaurant.price && (

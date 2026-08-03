@@ -21,30 +21,30 @@ export const ui = {
 
   home: {
     kicker: "KENNETH LIN / PORTFOLIO",
-    careerCard: {
-      label: "01 / CAREER",
-      title: {
-        en: "Chips, signals, and the tools I live in",
-        zh: "晶片、訊號，和我天天泡在裡面的工具",
+    // The menu-card index: big serif name, dotted leader, small description
+    menu: [
+      {
+        href: "/career",
+        num: "01",
+        label: { en: "Career", zh: "職涯" },
+        desc: { en: "the serious half", zh: "正經的那一半" },
+        accent: "eng",
       },
-      blurb: {
-        en: "Experience, projects, and education, from RTL to silicon.",
-        zh: "經歷、專案與學歷，從 RTL 到晶片。",
+      {
+        href: "/food",
+        num: "02",
+        label: { en: "Food", zh: "食" },
+        desc: { en: "the delicious half", zh: "好吃的那一半" },
+        accent: "food",
       },
-      arrow: { en: "→ the work", zh: "→ 看正事" },
-    },
-    foodCard: {
-      label: "02 / FOOD",
-      title: {
-        en: "Cooking, and everywhere worth eating",
-        zh: "下廚，以及所有值得一吃的地方",
+      {
+        href: "/ollie",
+        num: "03",
+        label: { en: "Ollie", zh: "Ollie" },
+        desc: { en: "the best boy", zh: "最乖的那位" },
+        accent: "food",
       },
-      blurb: {
-        en: "What I cook, and a world list of restaurants worth remembering.",
-        zh: "我做的菜，還有一份世界各地值得記住的餐廳清單。",
-      },
-      arrow: { en: "→ the list", zh: "→ 看清單" },
-    },
+    ],
   },
 
   career: {
@@ -67,17 +67,13 @@ export const ui = {
     title: { en: "The other half", zh: "吃喝的那一半" },
     listTitle: { en: "Restaurants", zh: "餐廳" },
     listBlurb: {
-      en: "A list of memorable restaurants I’ve eaten at.",
-      zh: "我吃過、值得記住的餐廳。",
+      en: "A list of memorable restaurants I’ve eaten at",
+      zh: "我吃過、值得記住的餐廳",
     },
     sampleBanner: {
       en: "Showing sample data. The real list is coming soon.",
       zh: "目前顯示的是範例資料，真正的清單即將上線。",
     },
-    stats: (lang, { restaurants, cities, countries }) =>
-      lang === "zh"
-        ? `${restaurants} 間餐廳 · ${cities} 座城市 · ${countries} 個國家`
-        : `${restaurants} RESTAURANTS · ${cities} CITIES · ${countries} COUNTRIES`,
     backToFood: { en: "← All regions", zh: "← 回所有地區" },
     restaurantCount: (lang, n) =>
       lang === "zh" ? `${n} 間餐廳` : n === 1 ? "1 restaurant" : `${n} restaurants`,
@@ -90,10 +86,6 @@ export const ui = {
 
   footer: {
     kicker: { en: "GET IN TOUCH", zh: "聯絡我" },
-    blurb: {
-      en: "The fastest way to reach me is LinkedIn. Restaurant arguments also welcome.",
-      zh: "找我最快的方式是 LinkedIn，也歡迎來跟我吵哪家餐廳最好吃。",
-    },
   },
 
   notFound: {

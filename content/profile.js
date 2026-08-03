@@ -6,13 +6,11 @@
 export const profile = {
   name: "Kenneth Lin",
 
-  // Home page hero — kept intentionally simple.
-  heroTitlePrefix: { en: "Hi, I’m ", zh: "嗨，我是 " },
-  heroTitleName: "Kenneth",
-  heroTitleSuffix: { en: "", zh: "" },
+  // Home page hero, kept intentionally simple.
+  heroTitle: { en: "Hi!", zh: "嗨！" },
   subhead: {
-    en: "Welcome to my corner of the internet. Have a look around.",
-    zh: "歡迎來到我的網路小角落，隨意逛逛。",
+    en: "Welcome to my website, feel free to look around!",
+    zh: "歡迎來到我的網站，隨意逛逛！",
   },
 
   // Career page intro (from the 2025 resume summary)
@@ -23,8 +21,8 @@ export const profile = {
 
   // Food page intro
   foodBio: {
-    en: "Home cook and restauranteur.",
-    zh: "在家下廚，出門大吃大喝。",
+    en: "Home cook and restauranteur",
+    zh: "在家下廚，出門大吃大喝",
   },
 
   links: {

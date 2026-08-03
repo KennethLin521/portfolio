@@ -20,7 +20,6 @@ export default function SiteFooter() {
       <div className="container footer-inner">
         <div>
           <p className="footer-kicker">{pick(ui.footer.kicker, lang)}</p>
-          <p className="footer-blurb">{pick(ui.footer.blurb, lang)}</p>
         </div>
         <nav className="footer-links" aria-label="Social links">
           {external.map(([label, url]) => (

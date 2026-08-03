@@ -7,35 +7,32 @@ import { ui } from "../content/strings";
 
 export default function HomeContent() {
   const { lang } = useLang();
-  const { careerCard, foodCard } = ui.home;
 
   return (
-    <>
+    <div className="casual">
       <section className="hero container">
         <p className="kicker">{ui.home.kicker}</p>
         <h1>
-          {pick(profile.heroTitlePrefix, lang)}
-          <span className="u-food">{profile.heroTitleName}</span>
-          {pick(profile.heroTitleSuffix, lang)}
+          <span className="u-food">{pick(profile.heroTitle, lang)}</span>
         </h1>
         <p className="sub">{pick(profile.subhead, lang)}</p>
       </section>
 
-      <section className="paths container">
-        <Link href="/career" className="path-card path-card--eng">
-          <span className="path-label">{careerCard.label}</span>
-          <h2>{pick(careerCard.title, lang)}</h2>
-          <p>{pick(careerCard.blurb, lang)}</p>
-          <span className="path-arrow">{pick(careerCard.arrow, lang)}</span>
-        </Link>
-
-        <Link href="/food" className="path-card path-card--food">
-          <span className="path-label">{foodCard.label}</span>
-          <h2>{pick(foodCard.title, lang)}</h2>
-          <p>{pick(foodCard.blurb, lang)}</p>
-          <span className="path-arrow">{pick(foodCard.arrow, lang)}</span>
-        </Link>
+      {/* Menu-card index: like a restaurant menu, not a nav grid */}
+      <section className="menu container" aria-label="Site index">
+        {ui.home.menu.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`menu-row menu-row--${item.accent}`}
+          >
+            <span className="menu-num">{item.num}</span>
+            <span className="menu-name">{pick(item.label, lang)}</span>
+            <span className="menu-dots" aria-hidden="true" />
+            <span className="menu-desc">{pick(item.desc, lang)}</span>
+          </Link>
+        ))}
       </section>
-    </>
+    </div>
   );
 }

@@ -11,7 +11,7 @@ export default function CityContent({ city }) {
   const t = ui.food;
 
   return (
-    <div className="container">
+    <div className="container casual">
       <header className="page-header">
         <Link href="/food" className="back-link">
           {pick(t.backToFood, lang)}

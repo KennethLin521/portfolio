@@ -18,13 +18,13 @@ export const experience = [
     location: { en: "San Jose, CA", zh: "加州聖荷西" },
     logo: "/images/logos/credo.svg",
     summary: {
-      en: "Power and timing characterization for high-speed digital and AMS circuits.",
-      zh: "高速數位與 AMS 電路的功耗與時序特性分析。",
+      en: "Power and timing simulation across high-speed digital and AMS circuits.",
+      zh: "高速數位與 AMS 電路的功耗與時序模擬。",
     },
     bullets: [
       {
-        en: "Delivered power and timing characterization reports for high-speed digital and AMS circuits, including PCIe, ADC, T&H, and MUX blocks.",
-        zh: "交付高速數位與 AMS 電路的功耗與時序特性報告，涵蓋 PCIe、ADC、T&H 與 MUX 等區塊。",
+        en: "Delivered power and timing reports for high-speed digital and AMS circuits, including PCIe, ADC, T&H, and MUX blocks.",
+        zh: "交付高速數位與 AMS 電路的功耗與時序報告，涵蓋 PCIe、ADC、T&H 與 MUX 等區塊。",
       },
       {
         en: "Wrote Tcl utilities for physical implementation, including IP-aware placement blockages and filler insertion, verified through DRC runs.",
@@ -47,8 +47,8 @@ export const experience = [
     location: { en: "Amherst, MA", zh: "麻州安默斯特" },
     logo: "/images/umass.png",
     summary: {
-      en: "FPGA security labs and office hours for 120 students.",
-      zh: "FPGA 安全實驗與 120 名學生的 Office Hour。",
+      en: "FPGA security labs and office hours.",
+      zh: "FPGA 安全實驗與 Office Hour。",
     },
     bullets: [
       {
