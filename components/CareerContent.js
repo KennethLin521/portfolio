@@ -76,10 +76,21 @@ function ProjectCard({ project, lang, open, onToggle }) {
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
         <div>
-          {project.image && (
-            <img className="proj-img" src={project.image} alt={project.name} />
-          )}
           <p className="proj-desc">{pick(project.description, lang)}</p>
+          {project.images?.length > 0 && (
+            <div className="proj-img-row">
+              {project.images.map((img) => (
+                <figure key={img.src}>
+                  <img
+                    src={img.src}
+                    alt={pick(img.caption, lang)}
+                    loading="lazy"
+                  />
+                  <figcaption>{pick(img.caption, lang)}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
           <div className="chip-row">
             {project.tags.map((tag) => (
               <span className="chip" key={tag}>
@@ -107,7 +118,7 @@ export default function CareerContent() {
     });
 
   return (
-    <div className="container">
+    <div className="container formal">
       {/* Header: intro text sits beside the portrait — no dead whitespace */}
       <header className="page-header career-header">
         <div className="career-header-text">

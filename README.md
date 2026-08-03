@@ -54,6 +54,26 @@ One flat Google Sheet, columns:
 - No merged cells, no per-region tabs — the site groups and counts rows
   automatically.
 
+### Long-form reviews (photos + paragraphs)
+
+The sheet stays a small index: one row per restaurant, short note. For a
+full write-up, add a file at
+`content/reviews/<city-slug>/<restaurant-slug>.md` (slugs match the page
+URLs, e.g. `content/reviews/台北/鼎泰豐.md` for `/food/台北/鼎泰豐`):
+
+```
+A paragraph of the review. Blank lines separate paragraphs.
+
+![the xiao long bao](/images/restaurants/dtf-xlb.jpg)
+![the interior](/images/restaurants/dtf-inside.jpg)
+
+Two image lines back to back render side by side. Photos live in
+public/images/restaurants/ (compressed to ~300KB before committing).
+```
+
+The restaurant page renders the file below the sheet note, in order,
+blog-style. No review file = just the sheet note, which is fine too.
+
 ### Connecting the sheet
 
 1. In Google Sheets: **File → Share → Publish to web** → pick the tab →

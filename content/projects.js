@@ -1,9 +1,7 @@
 // ---------------------------------------------------------------------------
 // Featured projects on the Career page (the two from the 2025 resume).
 // Cards are collapsed to the tagline; clicking expands the full description.
-//
-// To add a picture: drop a file in public/images/projects/ and set `image`
-// (e.g. image: "/images/projects/pam4-eye.png"). null = no image shown.
+// `images` render side by side (two per project) with captions.
 // ---------------------------------------------------------------------------
 
 export const projects = [
@@ -19,7 +17,22 @@ export const projects = [
       zh: "SS-LMS 適應性 3-tap FFE / 1-tap DFE 等化器，於 SkyWater 130nm 製程完成 50 MHz 佈局後時序收斂。RTL 透過 MATLAB 協同模擬驗證，以眼圖指標與 BER 分析確認；並以 Yosys 與 OpenROAD 自動化 RTL-to-GDSII 流程，完成 DRC 與時序皆通過的簽核。",
     },
     tags: ["MATLAB", "Verilog", "Yosys / OpenROAD", "SkyWater 130nm"],
-    image: null,
+    images: [
+      {
+        src: "/images/projects/dsp_layout.jpg",
+        caption: {
+          en: "RTL-to-GDSII result on SkyWater 130nm",
+          zh: "SkyWater 130nm 上的 RTL-to-GDSII 成果",
+        },
+      },
+      {
+        src: "/images/projects/dsp_eyes.png",
+        caption: {
+          en: "Eye diagrams, before and after equalization",
+          zh: "等化前後的眼圖",
+        },
+      },
+    ],
   },
   {
     name: "512-bit SRAM Array",
@@ -33,6 +46,21 @@ export const projects = [
       zh: "含週邊邏輯的 512-bit SRAM 陣列，佈局前模擬達 1 GHz、佈局後達 650 MHz。以 SKILL 腳本自動產生階層式佈局，透過自訂 cell 拼接最小化面積；經 DRC/LVS 簽核與讀寫測試向量驗證。",
     },
     tags: ["Cadence Virtuoso", "SKILL", "DRC / LVS"],
-    image: null,
+    images: [
+      {
+        src: "/images/projects/sram_layout.jpg",
+        caption: {
+          en: "512-bit array layout",
+          zh: "512-bit 陣列佈局",
+        },
+      },
+      {
+        src: "/images/projects/sram_verification.jpg",
+        caption: {
+          en: "DRC/LVS verification results",
+          zh: "DRC/LVS 驗證結果",
+        },
+      },
+    ],
   },
 ];

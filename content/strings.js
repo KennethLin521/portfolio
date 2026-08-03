@@ -64,7 +64,7 @@ export const ui = {
 
   food: {
     kicker: "02 / FOOD",
-    title: { en: "The other half", zh: "吃喝的那一半" },
+    title: { en: "Let’s eat", zh: "開動吧" },
     listTitle: { en: "Restaurants", zh: "餐廳" },
     listBlurb: {
       en: "A list of memorable restaurants I’ve eaten at",

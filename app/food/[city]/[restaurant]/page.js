@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getRestaurants, buildCityIndex } from "../../../../lib/restaurants";
+import { getReview } from "../../../../lib/reviews";
 import RestaurantArticle from "../../../../components/RestaurantArticle";
 
 export const revalidate = 3600;
@@ -48,5 +49,8 @@ export async function generateMetadata({ params }) {
 export default async function RestaurantPage({ params }) {
   const { city, restaurant } = await findEntry(params);
   if (!city || !restaurant) notFound();
-  return <RestaurantArticle city={city} restaurant={restaurant} />;
+  const review = getReview(city.slug, restaurant.slug);
+  return (
+    <RestaurantArticle city={city} restaurant={restaurant} review={review} />
+  );
 }

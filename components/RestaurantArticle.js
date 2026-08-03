@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { optimizedPhotoUrl } from "../lib/restaurants";
 
-// A single restaurant's page — blog-post vibes. Everything on this page is
-// sheet data, rendered verbatim in whatever language it was written.
-// Photos render as a captioned gallery; Cloudinary URLs are served as
-// auto-optimized renditions.
-export default function RestaurantArticle({ city, restaurant }) {
+// A single restaurant's page — blog-post vibes. Sheet data (name, price,
+// notes) renders verbatim; if a review file exists in content/reviews/,
+// its paragraphs and photo rows render below in order.
+export default function RestaurantArticle({ city, restaurant, review }) {
   return (
     <div className="container casual">
       <article className="restaurant-article">
@@ -26,6 +25,31 @@ export default function RestaurantArticle({ city, restaurant }) {
 
         {restaurant.notes && <p className="article-notes">{restaurant.notes}</p>}
 
+        {/* Long-form review from content/reviews/<city>/<restaurant>.md */}
+        {review && (
+          <div className="review-body">
+            {review.map((block, i) =>
+              block.type === "images" ? (
+                <div className="review-img-row" key={i}>
+                  {block.items.map((img) => (
+                    <figure key={img.src}>
+                      <img
+                        src={optimizedPhotoUrl(img.src)}
+                        alt={img.caption || restaurant.name}
+                        loading="lazy"
+                      />
+                      {img.caption && <figcaption>{img.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <p key={i}>{block.text}</p>
+              )
+            )}
+          </div>
+        )}
+
+        {/* Quick photos from the sheet's Photo Links column (optional) */}
         {restaurant.photos.length > 0 && (
           <div className="photo-gallery">
             {restaurant.photos.map((photo, i) => (

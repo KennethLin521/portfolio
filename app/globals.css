@@ -424,6 +424,12 @@ button {
 .menu-row--eng:hover .menu-name { color: var(--eng); }
 .menu-row--food:hover .menu-name { color: var(--food); }
 
+/* Formal register for the career page: Times New Roman body text.
+   Mono labels/chips keep their own font. */
+.formal {
+  font-family: "Times New Roman", Times, "Noto Serif TC", PMingLiU, serif;
+}
+
 /* Casual register for the food half (and home/ollie): lowercase labels,
    italic display headings. Career keeps the formal upright look. */
 .casual .kicker,
@@ -435,8 +441,9 @@ button {
   font-style: italic;
 }
 
-.ollie-title {
+.casual .page-header h1.ollie-title {
   font-weight: 400;
+  font-style: normal;
 }
 
 /* ---- 6. Career page ------------------------------------------------------ */
@@ -656,11 +663,25 @@ button {
   padding: 1.8rem;
 }
 
-.proj-img {
+/* Two project images side by side, captions underneath */
+.proj-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.proj-img-row img {
   width: 100%;
   border-radius: 8px;
   border: 1px solid var(--line);
-  margin-top: 1rem;
+}
+
+.proj-img-row figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--muted);
 }
 
 .proj-desc {
@@ -1008,6 +1029,38 @@ button {
   font-size: 1.1rem;
   line-height: 1.8;
   padding-bottom: 2rem;
+}
+
+/* Long-form review: readable paragraphs, photo rows inline with the text */
+.review-body {
+  max-width: 62ch;
+  padding-bottom: 2.5rem;
+}
+
+.review-body p {
+  margin-bottom: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.review-img-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.review-img-row img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.review-img-row figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--muted);
 }
 
 .photo-gallery {

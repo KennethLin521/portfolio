@@ -23,8 +23,8 @@ export const experience = [
     },
     bullets: [
       {
-        en: "Delivered power and timing reports for high-speed digital and AMS circuits, including PCIe, ADC, T&H, and MUX blocks.",
-        zh: "交付高速數位與 AMS 電路的功耗與時序報告，涵蓋 PCIe、ADC、T&H 與 MUX 等區塊。",
+        en: "Delivered power and timing reports across high-speed digital and AMS circuit blocks.",
+        zh: "交付高速數位與 AMS 電路區塊的功耗與時序報告。",
       },
       {
         en: "Wrote Tcl utilities for physical implementation, including IP-aware placement blockages and filler insertion, verified through DRC runs.",
