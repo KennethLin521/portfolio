@@ -57,8 +57,8 @@ export const projects = [
       {
         src: "/images/projects/sram_verification.jpg",
         caption: {
-          en: "DRC/LVS verification results",
-          zh: "DRC/LVS 驗證結果",
+          en: "Digital verification with a custom testbench",
+          zh: "以自訂 testbench 進行數位驗證",
         },
       },
     ],

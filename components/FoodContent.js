@@ -107,6 +107,15 @@ export default function FoodContent({ tree, source }) {
           })}
         </div>
       </section>
+
+      {/* Placeholder for the future cooking half of this page */}
+      <section className="section">
+        <div className="section-label">
+          <span className="num">02</span>
+          <h2>{pick(t.cookingTitle, lang)}</h2>
+        </div>
+        <p className="list-blurb">{pick(t.cookingTbd, lang)}</p>
+      </section>
     </div>
   );
 }

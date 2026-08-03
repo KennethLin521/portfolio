@@ -643,6 +643,8 @@ button {
   flex-direction: column;
   gap: 0.4rem;
   font-size: 0.98rem;
+  /* match the summary's tone so expanding doesn't read as a weight jump */
+  color: var(--muted);
 }
 
 .timeline-item .chip-row {
@@ -661,6 +663,42 @@ button {
   border-radius: var(--radius);
   background: var(--panel);
   padding: 1.8rem;
+}
+
+/* Click-to-enlarge lightbox for project images */
+.proj-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(10, 8, 6, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+  animation: menu-in 0.15s ease;
+}
+
+.lightbox img {
+  max-width: min(1200px, 92vw);
+  max-height: 82vh;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.lightbox figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 /* Two project images side by side, captions underneath */

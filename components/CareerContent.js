@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLang, pick } from "../lib/i18n";
 import { profile } from "../content/profile";
 import { experience, education, leadership } from "../content/experience";
@@ -61,8 +61,8 @@ function TimelineItem({ item, lang, open, onToggle }) {
 }
 
 // One expandable project card: collapsed = name + tagline, expanded =
-// optional image + full description + tags.
-function ProjectCard({ project, lang, open, onToggle }) {
+// description + side-by-side images (click to enlarge) + tags.
+function ProjectCard({ project, lang, open, onToggle, onZoom }) {
   return (
     <article className="project-card">
       <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
@@ -81,11 +81,19 @@ function ProjectCard({ project, lang, open, onToggle }) {
             <div className="proj-img-row">
               {project.images.map((img) => (
                 <figure key={img.src}>
-                  <img
-                    src={img.src}
-                    alt={pick(img.caption, lang)}
-                    loading="lazy"
-                  />
+                  <button
+                    className="proj-zoom"
+                    onClick={() =>
+                      onZoom({ src: img.src, caption: pick(img.caption, lang) })
+                    }
+                    aria-label={`Enlarge: ${pick(img.caption, lang)}`}
+                  >
+                    <img
+                      src={img.src}
+                      alt={pick(img.caption, lang)}
+                      loading="lazy"
+                    />
+                  </button>
                   <figcaption>{pick(img.caption, lang)}</figcaption>
                 </figure>
               ))}
@@ -108,6 +116,7 @@ export default function CareerContent() {
   const { lang } = useLang();
   const t = ui.career;
   const [open, setOpen] = useState(() => new Set());
+  const [zoom, setZoom] = useState(null); // { src, caption } | null
 
   const toggle = (key) =>
     setOpen((prev) => {
@@ -116,6 +125,16 @@ export default function CareerContent() {
       else next.add(key);
       return next;
     });
+
+  // Esc closes the image lightbox
+  useEffect(() => {
+    if (!zoom) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setZoom(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoom]);
 
   return (
     <div className="container formal">
@@ -191,6 +210,7 @@ export default function CareerContent() {
                 lang={lang}
                 open={open.has(p.name)}
                 onToggle={() => toggle(p.name)}
+                onZoom={setZoom}
               />
             </Reveal>
           ))}
@@ -249,6 +269,20 @@ export default function CareerContent() {
           ))}
         </div>
       </section>
+
+      {zoom && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setZoom(null)}
+        >
+          <figure>
+            <img src={zoom.src} alt={zoom.caption} />
+            {zoom.caption && <figcaption>{zoom.caption}</figcaption>}
+          </figure>
+        </div>
+      )}
 
       <section className="section" id="leadership">
         <div className="section-label">

@@ -73,6 +73,11 @@ export const ui = {
       en: "Showing sample data. The real list is coming soon.",
       zh: "目前顯示的是範例資料，真正的清單即將上線。",
     },
+    cookingTitle: { en: "Cooking", zh: "下廚" },
+    cookingTbd: {
+      en: "TBD, this half is still in the kitchen",
+      zh: "TBD，這一半還在廚房裡準備",
+    },
     backToFood: { en: "← All regions", zh: "← 回所有地區" },
     restaurantCount: (lang, n) =>
       lang === "zh" ? `${n} 間餐廳` : n === 1 ? "1 restaurant" : `${n} restaurants`,
