@@ -33,7 +33,8 @@ export default function FoodContent({ tree, source }) {
     <div className="container casual">
       <header className="page-header">
         <p className="kicker kicker--food">{t.kicker}</p>
-        <h1 className="food-title">{pick(profile.foodBio, lang)}</h1>
+        <h1>{pick(t.title, lang)}</h1>
+        <p className="lede">{pick(profile.foodBio, lang)}</p>
       </header>
 
       <div className="social-row">

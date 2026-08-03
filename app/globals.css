@@ -437,13 +437,8 @@ button {
   text-transform: lowercase;
 }
 
-.casual .page-header h1 {
-  font-style: italic;
-}
-
-.casual .page-header h1.ollie-title {
+.ollie-title {
   font-weight: 400;
-  font-style: normal;
 }
 
 /* ---- 6. Career page ------------------------------------------------------ */
@@ -863,12 +858,6 @@ button {
   font-size: 1.35rem;
   font-weight: 500;
   transition: color 0.15s ease;
-}
-
-/* The food h1 is the one-liner bio itself — a bit smaller than page titles */
-.food-title {
-  font-size: clamp(1.9rem, 4vw, 2.8rem);
-  max-width: 22ch;
 }
 
 .continent-toggle:hover .continent-name {

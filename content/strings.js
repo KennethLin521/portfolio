@@ -34,7 +34,7 @@ export const ui = {
         href: "/food",
         num: "02",
         label: { en: "Food", zh: "食" },
-        desc: { en: "the delicious half", zh: "好吃的那一半" },
+        desc: { en: "the creative half", zh: "有創意的那一半" },
         accent: "food",
       },
       {
@@ -64,6 +64,7 @@ export const ui = {
 
   food: {
     kicker: "02 / FOOD",
+    title: { en: "All things food", zh: "關於吃的一切" },
     listTitle: { en: "Restaurants", zh: "餐廳" },
     listBlurb: {
       en: "A list of memorable restaurants I’ve eaten at",
