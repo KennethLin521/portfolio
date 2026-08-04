@@ -362,6 +362,7 @@ button {
   line-height: 1.08;
   letter-spacing: -0.015em;
   max-width: 18ch;
+  margin-top: 0.8rem;
 }
 
 .hero .sub {
