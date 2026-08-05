@@ -79,6 +79,23 @@ export const ui = {
       en: "TBD, this half is still in the kitchen",
       zh: "TBD，這一半還在廚房裡準備",
     },
+    suggest: {
+      title: { en: "Suggestion box", zh: "推薦餐廳" },
+      blurb: {
+        en: "Know a spot I need to try? Tell me",
+        zh: "有我該去吃的店嗎，跟我說",
+      },
+      restaurant: { en: "restaurant name", zh: "餐廳名稱" },
+      location: { en: "city / country", zh: "城市／國家" },
+      note: { en: "what should I order?", zh: "該點什麼？" },
+      button: { en: "Send it", zh: "送出" },
+      sending: { en: "Sending…", zh: "送出中…" },
+      done: { en: "Got it, thank you! 🍜", zh: "收到了，謝謝！🍜" },
+      error: {
+        en: "That didn’t send. Try again?",
+        zh: "好像沒送出去，再試一次？",
+      },
+    },
     backToFood: { en: "← All regions", zh: "← 回所有地區" },
     restaurantCount: (lang, n) =>
       lang === "zh" ? `${n} 間餐廳` : n === 1 ? "1 restaurant" : `${n} restaurants`,

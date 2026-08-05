@@ -946,6 +946,78 @@ button {
   }
 }
 
+/* Suggestion box */
+.suggest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 460px;
+  margin-top: 1.4rem;
+}
+
+.suggest-form input,
+.suggest-form textarea {
+  font: inherit;
+  color: var(--fg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s ease;
+}
+
+.suggest-form input:focus,
+.suggest-form textarea:focus {
+  border-color: var(--food);
+}
+
+.suggest-form input::placeholder,
+.suggest-form textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Honeypot: visually gone, still in the DOM for bots */
+.suggest-form .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.suggest-btn {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.suggest-btn:hover:not(:disabled) {
+  border-color: var(--food);
+  color: var(--food);
+}
+
+.suggest-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.suggest-done {
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+}
+
+.suggest-error {
+  font-size: 0.9rem;
+  color: var(--food);
+}
+
 /* ---- 8. Language menu + toast ------------------------------------------------ */
 
 .lang {

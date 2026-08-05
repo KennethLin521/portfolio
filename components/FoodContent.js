@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useLang, pick } from "../lib/i18n";
 import { profile } from "../content/profile";
 import { ui } from "../content/strings";
+import SuggestionBox from "./SuggestionBox";
 
 // The /food page: intro, socials, and the region list. Continents fold out
 // to countries (labels) and cities (links). City/country/continent names
@@ -117,6 +118,8 @@ export default function FoodContent({ tree, source }) {
         </div>
         <p className="list-blurb">{pick(t.cookingTbd, lang)}</p>
       </section>
+
+      <SuggestionBox />
     </div>
   );
 }
