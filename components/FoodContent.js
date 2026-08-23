@@ -32,25 +32,19 @@ export default function FoodContent({ tree, source }) {
 
   return (
     <div className="container casual">
-      <header className="page-header">
+      {/* Compact header: the list is the page, so no intro ceremony */}
+      <header className="page-header page-header--compact">
         <p className="kicker kicker--food">{t.kicker}</p>
         <h1>{pick(t.title, lang)}</h1>
-        <p className="lede">{pick(profile.foodBio, lang)}</p>
+        <div className="food-meta-row">
+          <span className="food-caption">{pick(profile.foodBio, lang)}</span>
+          {socials.map(([label, url]) => (
+            <a key={label} href={url} target="_blank" rel="noopener noreferrer">
+              {label} ↗
+            </a>
+          ))}
+        </div>
       </header>
-
-      <div className="social-row">
-        {socials.map(([label, url]) => (
-          <a
-            key={label}
-            className="social-btn"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {label} ↗
-          </a>
-        ))}
-      </div>
 
       <section className="section">
         <div className="section-label">

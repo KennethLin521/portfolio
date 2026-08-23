@@ -832,30 +832,36 @@ button {
 
 /* ---- 7. Food page ---------------------------------------------------------- */
 
-.social-row {
+/* Compact food header: caption + social links share one quiet line so the
+   restaurant list lands in the first screen */
+.page-header--compact {
+  padding: 2.6rem 0 0.6rem;
+}
+
+.food-meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  padding-bottom: 3rem;
+  align-items: baseline;
+  gap: 0.4rem 1.5rem;
+  margin-top: 0.9rem;
 }
 
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+.food-caption {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.food-meta-row a {
   font-family: var(--mono);
-  font-size: 0.85rem;
-  padding: 0.65rem 1.1rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
-  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.social-btn:hover {
-  border-color: var(--food);
+.food-meta-row a:hover {
   color: var(--food);
-  transform: translateY(-1px);
+  border-color: var(--food);
 }
 
 .list-blurb {
