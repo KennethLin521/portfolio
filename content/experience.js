@@ -9,33 +9,57 @@
 
 export const experience = [
   {
-    date: { en: "Jun 2025 to Present", zh: "2025年6月 至今" },
-    title: {
-      en: "Technology Design Co-Optimization Engineer Intern",
-      zh: "技術設計協同最佳化實習工程師",
-    },
+    // LinkedIn-style stacked roles: one company card, newest role first
     org: "Credo Semiconductor",
     location: { en: "San Jose, CA", zh: "加州聖荷西" },
     logo: "/images/logos/credo.svg",
-    summary: {
-      en: "Power and timing simulation across high-speed digital and AMS circuits.",
-      zh: "高速數位與 AMS 電路的功耗與時序模擬。",
-    },
-    bullets: [
+    roles: [
       {
-        en: "Delivered power and timing reports across high-speed digital and AMS circuit blocks.",
-        zh: "交付高速數位與 AMS 電路區塊的功耗與時序報告。",
+        date: { en: "Aug 2026 to Present", zh: "2026年8月 至今" },
+        title: { en: "Associate Design Engineer", zh: "副設計工程師" },
+        summary: {
+          en: "Digital design flow, middle end and back end.",
+          zh: "數位設計流程，中段與後段。",
+        },
+        bullets: [
+          {
+            en: "Running the digital middle-end flow from design initialization through clock tree synthesis, routing, and chip finish.",
+            zh: "執行數位中段流程，從設計初始化、時脈樹合成、繞線到 chip finish。",
+          },
+          {
+            en: "Writing Tcl utilities for physical implementation, including IP-aware placement blockages and filler insertion, verified through DRC runs.",
+            zh: "撰寫實體實作的 Tcl 工具，包含 IP-aware placement blockage 與 filler 插入，並經 DRC 驗證。",
+          },
+        ],
+        tools: ["Fusion Compiler", "Tcl", "Bash", "ICV"],
       },
       {
-        en: "Wrote Tcl utilities for physical implementation, including IP-aware placement blockages and filler insertion, verified through DRC runs.",
-        zh: "撰寫實體實作的 Tcl 工具，包含 IP-aware placement blockage 與 filler 插入，並經 DRC 驗證。",
-      },
-      {
-        en: "Enabled a Synopsys-to-MATLAB analysis pipeline with the MATLAB Engine API, replacing manual waveform exports with automatic post-simulation analysis.",
-        zh: "以 MATLAB Engine API 建立 Synopsys 模擬至 MATLAB 的自動化分析管線，取代人工波形匯出。",
+        date: { en: "Jun 2025 to Aug 2026", zh: "2025年6月 至 2026年8月" },
+        title: {
+          en: "Technology Design Co-Optimization Engineer Intern",
+          zh: "技術設計協同最佳化實習工程師",
+        },
+        summary: {
+          en: "High-speed mixed-signal validation.",
+          zh: "高速混合訊號驗證。",
+        },
+        bullets: [
+          {
+            en: "Delivered power and timing reports across high-speed digital and AMS circuit blocks.",
+            zh: "交付高速數位與 AMS 電路區塊的功耗與時序報告。",
+          },
+          {
+            en: "Debugged SAR ADC simulation migration across process nodes in Custom Compiler.",
+            zh: "於 Custom Compiler 除錯跨製程節點的 SAR ADC 模擬遷移。",
+          },
+          {
+            en: "Enabled a Synopsys-to-MATLAB analysis pipeline with the MATLAB Engine API, replacing manual waveform exports with automatic post-simulation analysis.",
+            zh: "以 MATLAB Engine API 建立 Synopsys 模擬至 MATLAB 的自動化分析管線，取代人工波形匯出。",
+          },
+        ],
+        tools: ["Custom Compiler", "MATLAB", "ASO.ai"],
       },
     ],
-    tools: ["Fusion Compiler", "Custom Compiler", "MATLAB", "Tcl", "Bash"],
   },
   {
     date: { en: "Sep 2024 to Dec 2024", zh: "2024年9月 至 12月" },

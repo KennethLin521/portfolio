@@ -11,40 +11,72 @@ import Reveal from "./Reveal";
 
 const SECTIONS = ["experience", "projects", "education", "skills", "leadership"];
 
-// One expandable timeline entry: collapsed = title + one-line summary,
-// expanded = full bullets + tool chips.
+// One expandable timeline entry. Two shapes:
+//  - single role: date / title / org / summary (classic)
+//  - stacked roles (item.roles, LinkedIn-style): org first, then each role's
+//    date / title / summary in order, newest first
+// Collapsed shows summaries; expanded swaps them for bullets + tool chips.
 function TimelineItem({ item, lang, open, onToggle }) {
+  const roles = item.roles ?? [item];
+  const stacked = Boolean(item.roles);
+
   return (
     <article className="timeline-item">
       <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
         <span className="xp-head">
-          <span className="date">{pick(item.date, lang)}</span>
-          <span className="xp-title">{pick(item.title, lang)}</span>
-          <span className="org">
-            {item.org} · {pick(item.location, lang)}
-          </span>
-          {/* Summary is for skimming; it hands off to the full bullets */}
-          {!open && (
-            <span className="xp-summary">{pick(item.summary, lang)}</span>
+          {stacked && (
+            <span className="org org-lead">
+              {item.org} · {pick(item.location, lang)}
+            </span>
           )}
+          {roles.map((role) => (
+            <span
+              className={stacked ? "role-head" : undefined}
+              key={role.title.en}
+            >
+              <span className="date">{pick(role.date, lang)}</span>
+              <span className="xp-title">{pick(role.title, lang)}</span>
+              {!stacked && (
+                <span className="org">
+                  {item.org} · {pick(item.location, lang)}
+                </span>
+              )}
+              {/* Summary is for skimming; it hands off to the bullets */}
+              {!open && (
+                <span className="xp-summary">{pick(role.summary, lang)}</span>
+              )}
+            </span>
+          ))}
+        </span>
+        <span className="xp-sign" aria-hidden="true">
+          {open ? "−" : "+"}
         </span>
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
         <div>
           <div className="xp-body-inner">
             <div className="xp-body-main">
-              <ul>
-                {item.bullets.map((b) => (
-                  <li key={b.en}>{pick(b, lang)}</li>
-                ))}
-              </ul>
-              <div className="chip-row">
-                {item.tools.map((t) => (
-                  <span className="chip" key={t}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+              {roles.map((role) => (
+                <div className="role-detail" key={role.title.en}>
+                  {stacked && (
+                    <span className="role-detail-title">
+                      {pick(role.title, lang)}
+                    </span>
+                  )}
+                  <ul>
+                    {role.bullets.map((b) => (
+                      <li key={b.en}>{pick(b, lang)}</li>
+                    ))}
+                  </ul>
+                  <div className="chip-row">
+                    {role.tools.map((t) => (
+                      <span className="chip" key={t}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
             {item.logo && (
               <img
@@ -72,6 +104,9 @@ function ProjectCard({ project, lang, open, onToggle, onZoom }) {
           {!open && (
             <span className="xp-summary">{pick(project.tagline, lang)}</span>
           )}
+        </span>
+        <span className="xp-sign" aria-hidden="true">
+          {open ? "−" : "+"}
         </span>
       </button>
       <div className={`xp-body${open ? " is-open" : ""}`}>
@@ -182,7 +217,7 @@ export default function CareerContent() {
         </div>
         <div className="timeline">
           {experience.map((job) => {
-            const key = job.title.en + job.date.en;
+            const key = job.roles ? job.org : job.title.en + job.date.en;
             return (
               <Reveal key={key}>
                 <TimelineItem

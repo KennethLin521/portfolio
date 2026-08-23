@@ -21,30 +21,7 @@ export const ui = {
 
   home: {
     kicker: "KENNETH LIN / PORTFOLIO",
-    // The menu-card index: big serif name, dotted leader, small description
-    menu: [
-      {
-        href: "/career",
-        num: "01",
-        label: { en: "Career", zh: "職涯" },
-        desc: { en: "the serious half", zh: "正經的那一半" },
-        accent: "eng",
-      },
-      {
-        href: "/food",
-        num: "02",
-        label: { en: "Food", zh: "食" },
-        desc: { en: "the creative half", zh: "有創意的那一半" },
-        accent: "food",
-      },
-      {
-        href: "/ollie",
-        num: "03",
-        label: { en: "Ollie", zh: "Ollie" },
-        desc: { en: "the best boy", zh: "最乖的那位" },
-        accent: "food",
-      },
-    ],
+    resume: { en: "Resume", zh: "履歷" },
   },
 
   career: {

@@ -13,10 +13,16 @@ export const profile = {
     zh: "歡迎來到我的網站，隨意逛逛！",
   },
 
-  // Career page intro (from the 2025 resume summary)
+  // Short bio on the home page
+  homeBio: {
+    en: "I’m Kenneth: design engineer at Credo Semiconductor, computer engineering master’s student at USC, home cook, and enthusiastic eater. This site holds both halves.",
+    zh: "我是 Kenneth：Credo Semiconductor 的設計工程師、USC 電腦工程碩士生，也在家下廚、四處覓食。這個網站裝著這兩個我。",
+  },
+
+  // Career page intro
   careerBio: {
-    en: "I’m a Computer Engineering master’s student at USC with experience in digital flows and high-speed circuit simulation. Currently at Credo Semiconductor.",
-    zh: "我目前在南加州大學（USC）攻讀電腦工程碩士，具備數位流程與高速電路模擬的經驗。現於 Credo Semiconductor 實習。",
+    en: "I’m an Associate Design Engineer at Credo Semiconductor and a Computer Engineering master’s student at USC, working across digital design flows and high-speed circuit simulation.",
+    zh: "我是 Credo Semiconductor 的副設計工程師，同時在南加州大學（USC）攻讀電腦工程碩士，主要投入數位設計流程與高速電路模擬。",
   },
 
   // Food page intro
