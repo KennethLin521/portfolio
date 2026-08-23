@@ -253,7 +253,14 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1rem;
+}
+
+.nav-sep {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--line);
+  user-select: none;
 }
 
 .nav-link {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useLang, pick } from "../lib/i18n";
 import { ui } from "../content/strings";
 
@@ -58,17 +58,27 @@ export default function SiteNav() {
           Kenneth Lin
         </Link>
         <nav className="nav-links" aria-label="Main navigation">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`nav-link${
-                pathname.startsWith(href) ? " is-active" : ""
-              }`}
-            >
-              {label}
-            </Link>
+          {links.map(({ href, label }, i) => (
+            <Fragment key={href}>
+              {i > 0 && (
+                <span className="nav-sep" aria-hidden="true">
+                  |
+                </span>
+              )}
+              <Link
+                href={href}
+                className={`nav-link${
+                  pathname.startsWith(href) ? " is-active" : ""
+                }`}
+              >
+                {label}
+              </Link>
+            </Fragment>
           ))}
+
+          <span className="nav-sep" aria-hidden="true">
+            |
+          </span>
 
           <div className="lang" ref={menuRef}>
             <button
