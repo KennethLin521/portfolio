@@ -18,8 +18,8 @@ export const experience = [
         date: { en: "Aug 2026 to Present", zh: "2026年8月 至今" },
         title: { en: "Associate Design Engineer", zh: "副設計工程師" },
         summary: {
-          en: "Digital design flow, middle end and back end.",
-          zh: "數位設計流程，中段與後段。",
+          en: "Middle/backend digital design flow.",
+          zh: "中後段數位設計流程。",
         },
         bullets: [
           {

@@ -13,7 +13,6 @@ export default function HomeContent() {
   return (
     <section className="hero container">
       <p className="kicker">{ui.home.kicker}</p>
-      <h1>{pick(profile.heroTitle, lang)}</h1>
       <p className="sub">{pick(profile.subhead, lang)}</p>
       <p className="home-bio">{pick(profile.homeBio, lang)}</p>
       <div className="home-links">

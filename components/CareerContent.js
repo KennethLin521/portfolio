@@ -11,58 +11,55 @@ import Reveal from "./Reveal";
 
 const SECTIONS = ["experience", "projects", "education", "skills", "leadership"];
 
-// One expandable timeline entry. Two shapes:
-//  - single role: date / title / org / summary (classic)
-//  - stacked roles (item.roles, LinkedIn-style): org first, then each role's
-//    date / title / summary in order, newest first
-// Collapsed shows summaries; expanded swaps them for bullets + tool chips.
+// One expandable timeline entry. Content flows per role: title (with the
+// date on the same line), then the summary — which the bullets replace in
+// place when the card is opened. Stacked entries (item.roles) lead with the
+// company; the logo and the +/− live in a slim right column. The whole card
+// is the click target.
 function TimelineItem({ item, lang, open, onToggle }) {
   const roles = item.roles ?? [item];
   const stacked = Boolean(item.roles);
 
+  const onKey = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onToggle();
+    }
+  };
+
   return (
-    <article className="timeline-item">
-      <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
-        <span className="xp-head">
+    <article
+      className="timeline-item xp-card"
+      onClick={onToggle}
+      onKeyDown={onKey}
+      role="button"
+      tabIndex={0}
+      aria-expanded={open}
+    >
+      <div className="xp-card-top">
+        <div className="xp-card-main">
           {stacked && (
             <span className="org org-lead">
               {item.org} · {pick(item.location, lang)}
             </span>
           )}
           {roles.map((role) => (
-            <span
-              className={stacked ? "role-head" : undefined}
-              key={role.title.en}
-            >
-              <span className="date">{pick(role.date, lang)}</span>
-              <span className="xp-title">{pick(role.title, lang)}</span>
+            <div className="role" key={role.title.en}>
+              <div className="role-row">
+                <span className="xp-title">{pick(role.title, lang)}</span>
+                <span className="date">{pick(role.date, lang)}</span>
+              </div>
               {!stacked && (
                 <span className="org">
                   {item.org} · {pick(item.location, lang)}
                 </span>
               )}
-              {/* Summary is for skimming; it hands off to the bullets */}
+              {/* Summary is for skimming; the bullets replace it in place */}
               {!open && (
                 <span className="xp-summary">{pick(role.summary, lang)}</span>
               )}
-            </span>
-          ))}
-        </span>
-        <span className="xp-sign" aria-hidden="true">
-          {open ? "−" : "+"}
-        </span>
-      </button>
-      <div className={`xp-body${open ? " is-open" : ""}`}>
-        <div>
-          <div className="xp-body-inner">
-            <div className="xp-body-main">
-              {roles.map((role) => (
-                <div className="role-detail" key={role.title.en}>
-                  {stacked && (
-                    <span className="role-detail-title">
-                      {pick(role.title, lang)}
-                    </span>
-                  )}
+              <div className={`xp-body${open ? " is-open" : ""}`}>
+                <div>
                   <ul>
                     {role.bullets.map((b) => (
                       <li key={b.en}>{pick(b, lang)}</li>
@@ -76,16 +73,17 @@ function TimelineItem({ item, lang, open, onToggle }) {
                     ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-            {item.logo && (
-              <img
-                className="xp-logo"
-                src={item.logo}
-                alt={`${item.org} logo`}
-              />
-            )}
-          </div>
+          ))}
+        </div>
+        <div className="xp-card-side">
+          {item.logo && (
+            <img className="xp-logo" src={item.logo} alt={`${item.org} logo`} />
+          )}
+          <span className="xp-sign" aria-hidden="true">
+            {open ? "−" : "+"}
+          </span>
         </div>
       </div>
     </article>
@@ -99,8 +97,10 @@ function ProjectCard({ project, lang, open, onToggle, onZoom }) {
     <article className="project-card">
       <button className="xp-toggle" onClick={onToggle} aria-expanded={open}>
         <span className="xp-head">
-          <span className="date">{pick(project.date, lang)}</span>
-          <span className="xp-title xp-title--serif">{project.name}</span>
+          <span className="role-row">
+            <span className="xp-title xp-title--serif">{project.name}</span>
+            <span className="date">{pick(project.date, lang)}</span>
+          </span>
           {!open && (
             <span className="xp-summary">{pick(project.tagline, lang)}</span>
           )}
