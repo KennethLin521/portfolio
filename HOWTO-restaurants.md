@@ -36,14 +36,11 @@ Rules that matter:
 on every deploy (every commit to this repo). To force it immediately:
 Vercel → portfolio project → Deployments → ⋯ on the top one → Redeploy.
 
-## 2. Get the review file (don't create it by hand)
+## 2. Get the review file 
 
-Tell Claude **"sync"**. Claude creates a correctly-named empty `.md` for
-every restaurant that doesn't have one yet, and updates the checklist in
-`REVIEWS-TODO.md` with one-click edit links. Empty files show nothing on
-the site, so this is always safe.
+Option 1: Tell Claude
 
-(DIY rule, if ever needed: the file must be
+Option 2: DIY, the file must be
 `content/reviews/<city-part>/<restaurant-part>.md` where the two parts are
 copied from the restaurant page's URL — e.g. the page
 `/food/new-york/katz-s-delicatessen` needs the file
@@ -54,9 +51,9 @@ Chinese. Copying from the URL bar avoids all guesswork.)
 ## 3. Write the review on GitHub
 
 1. Open the file: repo → `content/reviews/<city>/<restaurant>.md` → click
-   the **pencil icon** (top right of the file view). Or use the edit links
+   the pencil icon (top right of the file view). Or use the edit links
    in `REVIEWS-TODO.md`.
-2. Write. The format is tiny — three rules:
+2. Write! Format is tiny, three rules:
 
    ```
    This is a paragraph. It can run as long as you want and wrap freely.
